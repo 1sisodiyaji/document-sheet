@@ -50,6 +50,7 @@ const Navbar = () => {
                 src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732386338/WhatsApp_Image_2024-11-21_at_14.55.25_edab2be6_gtoaak-removebg-preview_dnynlk.png"
                 width={40}
                 height={40}
+                loading="lazy"
                 alt="logo"
               />
               <span className="self-center text-2xl font-regular whitespace-nowrap hidden md:flex">
@@ -156,6 +157,23 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
+              <Link to={'/privacy-policy'} 
+              className={`block py-2 px-3 rounded-md ${
+                      pathname === '/privacy-policy'
+                        ? "bg-green-300 text-black shadow-md"
+                        : "text-black hover:bg-green-200"
+                    }`}> 
+                    Privacy Policy
+                     </Link>
+              <Link to={'/terms-condition'} 
+               className={`block py-2 px-3 rounded-md ${
+                pathname === '/terms-condition'
+                  ? "bg-green-300 text-black shadow-md"
+                  : "text-black hover:bg-green-200"
+              }`}
+              > 
+              Terms & Condition
+               </Link>
             </ul>
           </div>
         </div>

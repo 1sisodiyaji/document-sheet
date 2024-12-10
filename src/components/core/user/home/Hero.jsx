@@ -32,7 +32,7 @@ const Hero = () => {
               </svg>
             </Link>
 
-            <Link to="/scan-qr" className="inline-flex items-center justify-center md:px-12 px-4 py-3 text-base font-medium text-center text-black border border-green-300 rounded-lg hover:bg-green-100">
+            <Link to="/scan-qr" className="inline-flex items-center justify-center px-12  py-3 text-base font-medium text-center text-black border border-green-400 rounded-lg hover:bg-green-100">
               <i className="fi fi-rs-qr-scan pe-2"></i>  Scan QR
             </Link>
           </div>
@@ -41,6 +41,7 @@ const Hero = () => {
             src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733772374/Picsart_24-11-25_20-02-29-454_1_i6wmnz_fcf7e1.webp'}
              width={1000}
               height={1000} 
+              loading="lazy"
               alt='Hero Section' 
               />
           </div>

@@ -4,7 +4,7 @@ import React from 'react'
 const Scan = () => {
   return (
     <>
-     <div className='my-24 bg-[#A7E4CD] flex justify-around items-center p-3'>
+     <div className='my-24 bg-[#A7E4CD] flex md:justify-around items-center p-3'>
         <section className='flex md:flex-row flex-col justify-around items-center md:w-[80vw] max-w-screen'>
 
           <article className='space-y-6 md:w-1/2 '>

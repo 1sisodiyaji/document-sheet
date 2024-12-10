@@ -17,6 +17,7 @@ const HeroAbout = () => {
                   className="w-2/3 rounded-lg shadow-lg "
                   width={1000}
                   height={1000}
+                  loading="lazy"
                 />
                 <img
                   src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732545539/1_keu1x0.png"
@@ -24,6 +25,7 @@ const HeroAbout = () => {
                   className="w-1/3 rounded-lg shadow-lg"
                   width={1000}
                   height={1000}
+                  loading="lazy"
                 />
               </div>
             </div>

@@ -29,7 +29,7 @@ const Cards = () => {
   </motion.div>
 
   <motion.div initial="hiddenLeft" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.8 }} variants={animationVariants} >
-    <FlipCard title={'Secure Data Storage & Access'} text={'Enjoy peace of mind with secure storage, accessible only to authorizedusers for complete data protection.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732427014/folder_d3xpkj.png'} />
+    <FlipCard title={'Secure Data Storage & Access'} text={'Enjoy peace of mind with secure storage,accessible only to authorized users for complete protection.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732427014/folder_d3xpkj.png'} />
   </motion.div>
 
   <motion.div initial="hiddenRight" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.8 }} variants={animationVariants}>

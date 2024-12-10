@@ -27,6 +27,7 @@ const ScanTabs = () => {
 
       // Assuming the response contains the data we need
       const data = response.data;
+      console.log(data);
       toast.success("See Your Bill");
 
       // Process data here (e.g., set modal data or state)
@@ -40,7 +41,7 @@ const ScanTabs = () => {
   };
 
   return (
-    <section className="my-24 p-1">
+    <section className="md:my-24  p-1">
       <div className="max-w-xl mx-auto flex justify-center space-x-6 bg-orange-100 p-3 rounded-full py-4">
         <button className="md:px-6 py-2 px-3 font-semibold md:text-sm text-xs rounded-lg transition-all bg-orange-400 text-white hover:bg-orange-500">
           Search by Serial Number

@@ -24,7 +24,7 @@ const FAQ = () => {
             transition={{ duration: 0.3, delay: 0.1 }}
           >
             <Accordion heading="How does Document Sheet ensure the security of my documents?" content="As per our security you will get an QR code to get your receipt and access the document." />
-            <Accordion heading="Can I access my documents from any device?" content="Yes, you can access the data from any device via our website and the QR code feature." />
+            <Accordion heading="Can I access my documents from any other device?" content="Yes, you can access the data from any device via our website and the QR code feature." />
           </motion.div>
 
           {/* Second row of accordions */}

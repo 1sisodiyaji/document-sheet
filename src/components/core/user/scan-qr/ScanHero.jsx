@@ -4,7 +4,7 @@
  const ScanHero = () => {
    return (
      <>
-      <section className="md:my-24 my-6 p-1">
+      <section className="md:my-32 my-24 p-1">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left Content */}
           <div>
@@ -40,6 +40,7 @@
               alt="QR Code Illustration"
               width={1000}
               height={1000}
+              loading="lazy"
               className="w-full h-auto rounded-lg shadow-lg"
             />
           </div>

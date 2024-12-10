@@ -40,6 +40,7 @@ const AboutCard = () => {
             alt="Documentation Services"
             className="w-2/3 rounded-full shadow-lg"
             width={400}
+            loading="lazy"
             height={400}
           />
         </motion.div>

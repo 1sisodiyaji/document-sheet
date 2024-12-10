@@ -37,16 +37,14 @@ const FlipCard = ({ title, text, src }) => {
       </div>
 
       {/* Back Side */}
-      <div
-        className={`absolute inset-0 bg-white p-4 overflow-hidden rounded-lg transition-opacity duration-500 border border-orange-300 shadow-orange-300 ${
-          isFlipped ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="p-2 bg-orange-100 md:w-36 rounded-lg mx-auto">
+      <div className={`absolute inset-0 bg-white p-4 overflow-hidden rounded-lg transition-opacity duration-500 border border-orange-300 flex flex-col justify-end items-end shadow-orange-300 ${
+          isFlipped ? "opacity-100" : "opacity-0"}`}>
+        <div className="p-3 bg-orange-100 md:w-36 rounded-lg mx-auto">
         <img
           src={src}
           width={1000}
           height={1000}
+          loading="lazy"
           alt={title}
           className="w-36 mx-auto animate-pulse duration-200"
         />

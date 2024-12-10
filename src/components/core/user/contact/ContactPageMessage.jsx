@@ -81,7 +81,7 @@ const ContactPageMessage = () => {
                         title="contact-animations"
                     ></iframe>
                 </div>
-                <div className="w-full md:w-1/2 p-4 bg-gray-50 rounded-lg shadow">
+                <div className="w-full md:w-1/2 p-4 bg-gray-50 rounded-lg shadow border-2">
                     <form className="max-w-3xl" onSubmit={handleSubmit}>
                         <label>Name</label>
                         <input

@@ -1,20 +1,16 @@
  
-import React, { useState } from "react"; 
+import React from "react"; 
 import { Link } from "react-router-dom";
 import Blogs from "../../../../data/Blogs";
-import CopyLink from "../../../common/CopyLink";
-import WhatsAppShare from "../../../common/WhatsAppShare";
+import TruncateText from "../../../../utils/TruncateText";
+import ShareButton from "../../../../utils/ShareButton";
+import TimeCalculator from "../../../../utils/TimeCalculator";
 
 const Blog = () => {
-    const [activeDropdown, setActiveDropdown] = useState(null);
-
-
-  const handleShareDropdown = (id) => {
-    setActiveDropdown(activeDropdown === id ? null : id);
-  };
+   
   return (
     <>
-    <div className="grid md:grid-cols-3 grid-cols-1 gap-10 max-w-7xl mx-auto md:my-24 my-12 md:p-8 p-2">
+    <div className="grid md:grid-cols-3 grid-cols-1 gap-10 max-w-7xl mx-auto md:my-24 my-16 md:p-8 p-2">
         {Blogs.map((blog, index) => (
           <div
             key={blog.id}
@@ -27,6 +23,7 @@ const Blog = () => {
             <div>
               <div className="relative">
                 <img
+                loading="lazy"
                   src={blog.image}
                   width={1000}
                   height={1000}
@@ -38,31 +35,18 @@ const Blog = () => {
               {/* Blog Content */}
               <div className="p-4">
                 <div className="flex justify-between">
-                  <div className="text-sm text-gray-600">{blog.readTime}</div>
-
-                  <div className="z-10">
-                    <button
-                      onClick={() => handleShareDropdown(blog.id)}
-                      className="cursor-pointer"
-                    >
-                      <i className="fi fi-sr-share-alt-square text-xl"></i>
-                    </button>
-                    {activeDropdown === blog.id && (
-                      <div className="absolute right-4 mt-2 p-2 bg-green-50 shadow-lg rounded-lg"> 
-                          <CopyLink slug={blog.slug} />   
-                           <WhatsAppShare slug={blog.slug} />  
-                      </div>
-                    )}
-                  </div>
+                  <div className="text-sm text-gray-600"> <TimeCalculator text = {blog.description} /></div>
+                   <ShareButton url={blog.slug}/>
+                  
                 </div>
                 <Link to={`/resources/${blog.slug}`}>
                   <h5 className="mt-2 md:text-lg text-md font-semibold text-gray-900 hover:text-green-600 transition-colors">
                     {blog.title}
                   </h5>
                 </Link>
-                <p className="text-gray-600 font-light mt-2 md:text-sm text-xs">
-                  {blog.description.split(" ").slice(0, 20).join(" ")}
+                <p className="text-gray-600 font-light mt-2 md:text-sm text-xs"> <TruncateText text = {blog.description} maxLength = {105}/>
                 </p>
+
               </div>
             </div>
           </div>

@@ -67,6 +67,7 @@ const AboutTabs = () => {
           className="w-full rounded-lg shadow-lg"
           width={1000}
           height={1000}
+          loading="lazy"
         />
       </div>
     </div>

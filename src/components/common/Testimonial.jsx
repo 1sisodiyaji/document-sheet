@@ -48,7 +48,7 @@ const Testimonial = () => {
   <h1 className='md:text-4xl text-xl font-semibold text-center overflow-y-hidden capitalize'>Let&apos;s hear What our Customers Saying . . </h1>
 </article>
 
-<section className="relative flex  md:flex-row flex-col my-12 max-w-full mx-auto bg-gray-50 py-6 gap-6 justify-center">
+<section className="relative flex  md:flex-row flex-col my-12 max-w-full mx-auto bg-gray-50 py-6 p-1 gap-6 justify-center">
 
   <Testimonials text={'ಭೂ ವಿವಾದಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ದಾಖಲೆಗಳನ್ನು ತ್ವರಿತವಾಗಿ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹವಾಗಿ ಪಡೆದುಕೊಳ್ಳಲು ಈ ಸೇವೆ ನಮಗೆ ಬಹಳ ಸಹಾಯ ಮಾಡಿತು!"'} name="Raghavendra Kumar" location="Bengaluru" />
   <Testimonials text={'"ನಾನೇ ವರ್ಷಗಳಿಂದ ಭೂ ದಾಖಲೆಗಳೊಂದಿಗೆ ಹೋರಾಟ ಮಾಡುತ್ತಿದ್ದೆ. ಅವರ ಸೇವೆಯಿಂದ, ಎಲ್ಲವೂ ಈಗ ಸುಗಮವಾಗಿದೆ!'} name="Shanthi Gowda" location="Mysuru" />

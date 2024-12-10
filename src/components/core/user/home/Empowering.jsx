@@ -8,7 +8,7 @@ const Empowering = () => {
 
 < section className="flex md:flex-row flex-col justify-around items-center md:w-[80vw] mx-auto" >
   <article className="space-y-6 md:w-1/2" >
-    <h1 className="md:text-3xl font-semibold">
+    <h1 className="md:text-3xl text-xl font-semibold">
       Empowering Your Transactions, Simplifying Processes
     </h1>
     <p className="md:text-lg">
@@ -41,6 +41,7 @@ const Empowering = () => {
       src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732279174/Images_1_vmzhht.png"
       width={1000}
       height={1000}
+      loading="lazy"
       className='overflow-y-hidden'
       alt="empowering section"
     />

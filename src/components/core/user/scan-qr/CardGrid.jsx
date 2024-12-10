@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const CardGrid = () => {
   return (
-    <div className="grid grid-cols-4 md:gap-6 gap-2 max-w-7xl mx-auto md:my-12 my-6 p-1">
+    <div className="grid grid-cols-4 md:gap-6 gap-2 max-w-7xl mx-auto md:my-12 mb-24 p-1">
 
       <motion.div
         className="col-span-3"

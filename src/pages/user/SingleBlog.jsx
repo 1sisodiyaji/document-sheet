@@ -1,12 +1,15 @@
 import React from "react";
-import { useParams } from "react-router-dom"; // Import useParams hook
-import Blogs from "../../data/Blogs"; 
+import { useParams } from "react-router-dom";
+import Blogs from "../../data/Blogs";
 import { Link } from "react-router-dom";
-import CopyLink from "../../components/common/CopyLink";
-import WhatsAppShare from "../../components/common/WhatsAppShare";
-
+import ShareButton from "../../utils/ShareButton";
+import TimeCalculator from "../../utils/TimeCalculator";
+import TruncateText from "../../utils/TruncateText";
+import "react-calendar/dist/Calendar.css";
+import Calendar from "react-calendar";
 const SingleBlog = () => {
-  const { slug } = useParams();  
+
+  const { slug } = useParams();
   const blog = Blogs.find((b) => b.slug === slug);
 
   if (!blog) {
@@ -16,16 +19,17 @@ const SingleBlog = () => {
       </div>
     );
   }
+  const parsedDate = new Date(blog.createdOn.replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$3-$1-$2"));
 
   return (
     <div className="max-w-7xl mx-auto my-24 flex md:flex-row flex-col">
       <div className="p-4 md:w-2/3">
-        <div className="flex gap-2">
+        <div className="flex md:flex-row flex-col gap-2">
           <h1 className="md:text-3xl text-lg font-semibold mb-4 overflow-y-hidden">{blog.title}</h1>
 
-          <div className="flex flex-col justify-center items-center md:w-24">
-            <CopyLink slug={blog.slug} />
-            <WhatsAppShare slug={blog.slug} />
+          <div className="flex md:flex-col  md:justify-center justify-end items-center md:w-24 w-full">
+            <TimeCalculator text={blog.description} />
+            <ShareButton url={blog.slug} />
           </div>
         </div>
 
@@ -34,6 +38,7 @@ const SingleBlog = () => {
           alt={blog.title}
           width={800}
           height={400}
+          loading="lazy"
           className="rounded-lg mb-4"
         />
         <p className="text-gray-600 md:text-lg text-sm leading-relaxed">
@@ -51,15 +56,47 @@ const SingleBlog = () => {
               className="mb-4 border p-4 border-gray-200 rounded-lg"
             >
               <Link to={`/resources/${relatedBlog.slug}`}>
-                <h3 className="text-sm font-semibold text-gray-800">
+                <h3 className="text-sm font-semibold text-gray-800 hover:underline">
                   {relatedBlog.title}
-                </h3>{" "}
+                </h3>
               </Link>
               <p className="text-gray-600 text-sm">
-                {relatedBlog.description.split(" ").slice(0, 20).join(" ")}
+                <TruncateText text={relatedBlog.description} maxLength={105} />
               </p>
+              <div className="flex items-center my-2">
+                <TimeCalculator text={relatedBlog.description} />
+
+                <p className="text-xs">
+                  {relatedBlog.tags.split(",").map((tag, index) => (
+                    <span
+                      key={index}
+                      className="inline-block bg-gray-200 text-black px-2 py-1 rounded-3xl mx-2"
+                    >
+                      {tag.trim()}
+                    </span>
+                  ))}
+                </p>
+              </div>
+
             </div>
           ))}
+
+        <p className="text-sm">
+          {blog.tags.split(",").map((tag, index) => (
+            <span
+              key={index}
+              className="inline-block bg-green-200 text-black px-4 py-2 rounded-3xl mr-2"
+            >
+              {tag.trim()}
+            </span>
+          ))}
+        </p>
+        <div className="mt-4">
+          <p className="flex items-center justify-center">
+
+          <Calendar value={parsedDate} />
+          </p> 
+        </div>
       </div>
     </div>
   );
