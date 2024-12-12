@@ -18,6 +18,7 @@ import AdminLogin from '../pages/admin/AdminLogin';
 import Payment from '../pages/user/Payment';
 import UserLayout from '../pages/user/UserLayout';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+import Template from './Template';
  
 
 const Routess = () => { 
@@ -50,6 +51,7 @@ const Routess = () => {
           <Route path="/vendor-login" element={<VendorLogin/>} />
           <Route path="/vendor" element={<VendorLoginChecker Component={VendorDashboard} />} />
           
+          <Route path="/template" element={<Template/>} />
       </Routes>
  
     </>

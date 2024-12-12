@@ -7,15 +7,15 @@ import {
 } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Chart = () => {
+const Chart = ({left,Total}) => {
 
     const data = {
-        labels: ["This Month", "Remaining"],
+        labels: ["Used" ,"Total Assigned"],
         datasets: [
           {
             label: "Tasks",
-            data: [35, 65], // Example: 35 tasks completed, 65 remaining
-            backgroundColor: ["#A8E6CF", "#FFDDC1"], // Colors for the chart
+            data: [left , Total],
+            backgroundColor: ["#A8E6CF", "#FFDDC1"], 
             hoverBackgroundColor: ["#81D4A3", "#FFC5A1"],
             borderWidth: 1,
           },
@@ -27,7 +27,7 @@ const Chart = () => {
           tooltip: {
             callbacks: {
               label: (context) =>
-                `${context.label}: ${context.raw} tasks`, // Customize tooltip labels
+                `${context.label}: ${context.raw} Sheets`, // Customize tooltip labels
             },
           },
         },

@@ -1,0 +1,84 @@
+
+#Main_Container{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    }
+    #Image_section{
+    overflow: hidden;
+    width: 1240px; 
+    height: 1754px; 
+    border: 2px solid black;
+    margin: auto;
+    box-shadow: inset 1px 1px 1px black;
+    background-image: url('https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732432320/Dastavej_Sheet_Design_1_1_qfpwx9.png');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    
+    }
+    #Date_system{
+    width: 15%;
+    position:fixed;
+    top: 75px;
+    right: 270px;
+    background-color: transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold; 
+    text-transform: uppercase;
+    outline: none;
+    border-left: none;    
+    border-top: none;     
+    border-right: none;  
+    border-bottom: 2px solid black;
+    }
+    
+    #Place_Section{
+    width: 15%;
+    position:fixed;
+    top: 98px;
+    right: 267px;
+    background-color: transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold; 
+    
+    text-transform: uppercase;
+    outline: none;
+    border-left: none;    
+    border-top: none;     
+    border-right: none;  
+    border-bottom: 2px solid black;
+    }
+    
+    #Reason_Section{
+    width: 15%;
+    position:fixed;
+    top: 426px;
+    right: 260px;
+    background-color: transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold; 
+    text-transform: uppercase;
+    outline: none;
+    border-left: none;    
+    border-top: none;     
+    border-right: none;  
+    border-bottom: 2px solid black;
+    
+    }
+    
+    #Nameing_Section{
+    width: 15%;
+    position:fixed;
+    top: 425px;
+    left: 325px;
+    background-color: transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold; 
+    text-transform: uppercase;
+    outline: none;
+    border-left: none;    
+    border-top: none;     
+    border-right: none;  
+    border-bottom: 2px solid black;
+    } 

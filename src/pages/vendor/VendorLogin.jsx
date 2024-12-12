@@ -19,7 +19,7 @@ const VendorLogin = () => {
         toast("Please fill password")
       }
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/admin/login`, {email,password});
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/vendor/login`, {email,password});
 
       if (response.status === 200) {
         const { token } = response.data;
