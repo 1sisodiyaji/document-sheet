@@ -53,7 +53,6 @@ const Home = () => {
     const getFeedback = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-feedback`);
-        console.log(response);
         if (response.data.success === true) {
           setFeedback(response.data.data);
           setCount(response.data.count);
