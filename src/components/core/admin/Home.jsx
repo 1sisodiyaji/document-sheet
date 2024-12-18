@@ -193,15 +193,15 @@ const Home = () => {
 
           <div className="flex flex-wrap justify-end gap-4">
 
-            {feedback.slice(0, 3).map((feedback, index) => (
+            {feedback  && feedback.map((feedback, index) => (
               <div
                 key={feedback._id}
                 className={`p-4 bg-white border border-orange-200 shadow rounded-lg w-full ${index === 2 ? 'md:w-full' : 'md:w-64'}`}
               >
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{feedback.name}</h3>
                 <p className="text-sm text-gray-500"><i className="fi fi-sr-envelope text-gray-900"></i> {feedback.email}</p>
-                <p className="text-sm text-gray-500"><i class="fi fi-sr-phone-call text-gray-900"></i> {feedback.mobile}</p>
-                <p className="mt-2 text-gray-600 bg-orange-100 p-2 rounded-md"><i class="fi fi-sr-messages text-gray-900"></i>  {feedback.message}</p>
+                <p className="text-sm text-gray-500"><i className="fi fi-sr-phone-call text-gray-900"></i> {feedback.mobile}</p>
+                <p className="mt-2 text-gray-600 bg-orange-100 p-2 rounded-md"><i className="fi fi-sr-messages text-gray-900"></i>  {feedback.message}</p>
                 <p className="mt-2 text-xs text-gray-400 text-end">
                   {new Date(feedback.createdAt).toLocaleDateString()}
                 </p>
