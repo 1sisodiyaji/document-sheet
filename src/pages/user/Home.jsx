@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import Skeleton from '../../components/common/Skeleton';
 import { Helmet } from 'react-helmet';
+const FiveCards = lazy(() => import ('../../components/core/user/home/FiveCards'));
 const Hero = lazy(() => import('../../components/core/user/home/Hero'));
 const Cards = lazy(() => import('../../components/core/user/home/Cards'));
 const Scan = lazy(() => import('../../components/core/user/home/Scan'));
@@ -35,6 +36,7 @@ const Home = () => {
             <Suspense fallback={<Skeleton />}> <Cards /> </Suspense>
             <Suspense fallback={<Skeleton />}>  <Scan />  </Suspense>
             <Suspense fallback={<Skeleton />}> <Empowering /> </Suspense>
+            <Suspense fallback={<Skeleton />}> <FiveCards /> </Suspense>
             <Suspense fallback={<Skeleton />}>  <Testimonial />  </Suspense>
             <Suspense fallback={<Skeleton />}> <FAQ />  </Suspense>
 

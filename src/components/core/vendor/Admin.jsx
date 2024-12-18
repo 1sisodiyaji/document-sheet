@@ -2,22 +2,18 @@ import React from 'react'
 
 const Admin = () => {
   return (
-    <div className="flex justify-around items-center h-[80vh]">
-              <div className="min-h-80 min-w-72 border-4 border-dashed border-[#FED7AA] flex flex-col justify-center items-center rounded-md">
-                <i className="fi fi-rr-circle-phone text-2xl"></i>
-                 <h1 className="text-3xl">6371790702</h1> 
-              </div>
+    <div className="flex md:flex-row flex-col justify-around items-center md:h-[80vh] space-y-2">
+      <a href='tel:+6371790702' className="min-h-80 w-80 border-4 border-dashed border-[#FED7AA] flex flex-col justify-center items-center rounded-xl">
+        <img src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734366067/telephone_zj4lyx.png" loading='lazy' alt="phone" className='h-28' />
+        <h1 className="text-3xl mt-4">6371790702</h1>
+      </a>
 
-              <div className="min-h-80 min-w-72 bg-[#FFDDA6] flex flex-col justify-center items-center rounded-md"> 
-                 <h1 className="text-lg mb-4">Request  Access for sheets</h1>
-                 <button className="px-4 py-2 bg-green-200 rounded-lg">Request Now</button>
-                </div>
-
-              <div className="min-h-80 min-w-72 border-4 border-dashed border-[#FED7AA] flex flex-col justify-center items-center rounded-md"> 
-                <i className="fi fi-rr-envelope text-2xl"></i>
-                 <h1 className="text-xl">637golusingh@gmail.com</h1> 
-                </div>
-            </div>
+      <a href='mailto:637golusingh@gmail.com' className="min-h-80 w-80 border-4 border-dashed border-[#FED7AA] flex flex-col justify-center items-center rounded-xl">
+       
+      <img src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734366172/email_acowt8.png" loading='lazy' alt="phone" className='h-28' />
+        <h1 className="text-xl mt-4">637golusingh@gmail.com</h1>
+      </a>
+    </div>
   )
 }
 

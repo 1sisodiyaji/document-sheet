@@ -13,9 +13,10 @@ const Hero = () => {
               </div>
             </div>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl ">Effortless and reliable document solutions for real estate <br /> — because every detail matters.</p>
+            <div className="flex ">
             <Link
               to="/create-new-sheet"
-              className="inline-flex items-center justify-center md:px-5 px-3 py-3 mr-3 text-base font-medium text-center text-white rounded-3xl bg-[#219B9D] hover:bg-[#A7E4CD] hover:text-black group focus:ring-2 focus:ring-green-300 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+              className="inline-flex items-center justify-center md:px-5 px-3 py-3 mr-3 md:text-base text-xs font-medium text-center text-white rounded-3xl bg-[#219B9D] hover:bg-[#A7E4CD] hover:text-black group focus:ring-2 focus:ring-green-300 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
             >
               Create Your Sheet
               <svg
@@ -32,9 +33,10 @@ const Hero = () => {
               </svg>
             </Link>
 
-            <Link to="/scan-qr" className="inline-flex items-center justify-center px-12  py-3 text-base font-medium text-center text-black border border-green-400 rounded-lg hover:bg-green-100">
+            <Link to="/scan-qr" className="inline-flex items-center justify-center px-12  py-3 md:text-base text-xs font-medium text-center text-black border border-green-400 rounded-lg hover:bg-green-100">
               <i className="fi fi-rs-qr-scan pe-2"></i>  Scan QR
             </Link>
+            </div>
           </div>
           <div className=" lg:mt-16 lg:col-span-6 flex justify-end items-end">
             <img 

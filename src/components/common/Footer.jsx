@@ -20,9 +20,9 @@ const Footer = () => {
       </footer>
       
         <div className='flex justify-center items-center'>
-        <footer className="w-96 rounded-3xl md:hidden flex justify-around items-center bg-[#C2E9DB] z-[20] fixed bottom-1 py-2 border ring-2 ring-green-400">
+        <footer className="w-full  md:hidden flex justify-around items-center bg-[#C2E9DB] z-[20] fixed bottom-1 py-1">
          <Link to={'/'}><i className="fi fi-rs-home text-2xl"></i> </Link> 
-         <Link to={'/create-new-sheet'} className='text-white bg-green-600 rounded-full w-10 h-10 p-2 overflow-y-hidden'> <i className="fi fi-rr-add text-2xl "></i> </Link>
+         <Link to={'/create-new-sheet'} className='text-white bg-green-600 rounded-full w-10 h-10 p-2 overflow-y-hidden flex justify-center items-center'> <i className="fi fi-rr-add text-2xl "></i> </Link>
          <Link to={'/scan-qr'}><i className="fi fi-bs-qr-scan text-2xl"></i> </Link> 
         </footer> 
         </div>

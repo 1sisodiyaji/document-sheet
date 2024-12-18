@@ -18,7 +18,7 @@ import AdminLogin from '../pages/admin/AdminLogin';
 import Payment from '../pages/user/Payment';
 import UserLayout from '../pages/user/UserLayout';
 import AdminDashboard from '../pages/admin/AdminDashboard';
-import Template from './Template';
+import SuccessPage from '../pages/user/SuccessPage';
  
 
 const Routess = () => { 
@@ -42,7 +42,7 @@ const Routess = () => {
             <Route path="/payment" element={<UserLayout><Payment /></UserLayout>} />
             <Route path="/privacy-policy" element={<UserLayout><PrivacyPolicy /></UserLayout>} />
             <Route path="/terms-condition" element={<UserLayout><TermsCondition /></UserLayout>} /> 
-       
+             <Route path="/feedback" element={<SuccessPage/>} />
  
           <Route path="/admin-login" element={<AdminLogin/>} />
           <Route path="/admin" element={<AdminLoginChecker Component={AdminDashboard} />} />
@@ -51,7 +51,7 @@ const Routess = () => {
           <Route path="/vendor-login" element={<VendorLogin/>} />
           <Route path="/vendor" element={<VendorLoginChecker Component={VendorDashboard} />} />
           
-          <Route path="/template" element={<Template/>} />
+         
       </Routes>
  
     </>

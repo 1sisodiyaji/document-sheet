@@ -1,43 +1,64 @@
-import React , {useState}from "react";
+import React, { useEffect, useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import AUTHENTICATE_ANIMARIONS from "../../data/Auth_Animation.json";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
+
 const VendorLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [loading,setLoading] = useState(false);
+  const[ShowPasswordData, setShowPasswordData] = useState(false);
   const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
-      if(!email){
-        toast("Please fill email");
-      }
-      if(!password){
-        toast("Please fill password")
-      }
+    if (!email) {
+      toast("Please fill email");
+      return;
+    }
+    if (!password) {
+      toast("Please fill password");
+      return;
+    }
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/vendor/login`, {email,password});
-
+      setLoading(true);
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/vendor/login`, { email, password });
       if (response.status === 200) {
         const { token } = response.data;
-        Cookies.set("Vendor-document-sheet-token-#VDST", token);
+        Cookies.set("Vendor-document-sheet-token-#VDST", token,{expires : '1d'});
         navigate("/vendor");
+        setLoading(false);
       } else {
+        setLoading(false);
         setError("Login failed. Please check your credentials.");
       }
     } catch (err) {
+      setLoading(false);
       setError(err.response?.data?.message || "An error occurred. Please try again.");
     }
   };
+
+  const ShowPassword = () => {
+    setShowPasswordData(!ShowPasswordData);
+  }
+
+  useEffect(() =>{
+   const token =  Cookies.get("Vendor-document-sheet-token-#VDST");
+   if(token){
+    navigate("/vendor");
+   }
+  },[navigate]);
+
   return (
     <div className="min-h-screen flex">
       {/* Left Section */}
       <div className="md:w-1/2 hidden md:flex flex-col justify-center items-center bg-gradient-to-b from-[#EFDEC4] to-[#D1E1D0] p-8">
         <div className="flex justify-center p-3">
-         
+
           {["S", "E", "C", "U", "R", "E"].map((letter, index) => (
             <div
               key={index}
@@ -47,7 +68,7 @@ const VendorLogin = () => {
               {letter}
             </div>
           ))}
-         
+
           {["Y", "O", "U", "R"].map((letter, index) => (
             <div
               key={index}
@@ -57,11 +78,11 @@ const VendorLogin = () => {
               {letter}
             </div>
           ))}
-          
-          
+
+
         </div>
         <div className="flex p-3">
-        {["F", "U", "T", "U", "R", "E"].map((letter, index) => (
+          {["F", "U", "T", "U", "R", "E"].map((letter, index) => (
             <div
               key={index}
               className="flex justify-center items-center  w-14 h-14 bg-blue-200 rounded-full animate-bounce mx-1"
@@ -78,9 +99,9 @@ const VendorLogin = () => {
           autoplay
           loop
           src={AUTHENTICATE_ANIMARIONS}
-          className="w-full h-[60vh]" 
+          className="w-full h-[60vh]"
         />
-       
+
       </div>
 
       {/* Right Section */}
@@ -98,19 +119,19 @@ const VendorLogin = () => {
           </div>
 
           {error && (
-          <div className="text-red-500 text-sm font-medium mb-4 text-center">
-            {error}
-          </div>
-        )}
+            <div className="text-red-500 text-sm font-medium mb-4 text-center">
+              {error}
+            </div>
+          )}
 
 
-          <form onSubmit={handleLogin}  className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4">
             <div className="p-1">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email or Mobile Number
+                Email
               </label>
               <input
                 type="email"
@@ -118,19 +139,20 @@ const VendorLogin = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="Enter your email or mobile number"
+                placeholder="Enter your email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-300 focus:outline-none"
               />
             </div>
-            <div className="p-1">
+            <div>
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
                 Password
               </label>
+              <div className="flex p-1">
               <input
-                type="password"
+                type= {ShowPasswordData ? 'text': 'password'} 
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -138,12 +160,27 @@ const VendorLogin = () => {
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-300 focus:outline-none"
               />
+
+              <div onClick={ () => ShowPassword(ShowPasswordData)} className="mx-1 flex justify-center items-center cursor-pointer">
+                <i className={ShowPasswordData ? 'fi fi-rr-eye': 'fi fi-rs-crossed-eye'}></i>
+              </div>
+             
+              </div>
             </div>
             <button
               type="submit"
-              className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition"
+              disabled={loading}
+              className={`w-full  py-2 rounded-lg font-semibold  transition ${loading ? 'cursor-not-allowed bg-green-400 text-white  ' : 'bg-green-600 text-white hover:bg-green-700 cursor-pointer'}`}
             >
-              Login
+              
+              {loading ? (
+                  <div className="flex items-center justify-center overflow-y-hidden">
+                    <div className="w-6 h-6 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
+                    <span className="ml-2">Welcome to Document Sheet</span>
+                  </div>
+                ) : (
+                  'Login'
+                )}
             </button>
           </form>
         </div>

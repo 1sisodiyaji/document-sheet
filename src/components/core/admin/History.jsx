@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import Cookies from "js-cookie";
 import axios from "axios";
 import Skeleton from "../../common/Skeleton";
 import TimeConverter from "../../../utils/TimeConverter";
 import { Link } from "react-router-dom";
-import SingleHistoryData from "./SingleHistoryData";
+import SingleHistory from "./SingleHistory";
 
 const History = () => {
   const [historyPresent, setHistoryPresent] = useState(null);
@@ -14,7 +13,7 @@ const History = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [count, setCount] = useState('0');
+  const[count,setCount] = useState('0');
   const limit = 4;
 
   const handleView = (id) => {
@@ -23,29 +22,13 @@ const History = () => {
   };
 
   const fetchHistory = async (page) => {
-    const token = Cookies.get("Vendor-document-sheet-token-#VDST");
-
-    if (!token) {
-      toast.error("Token not found.");
-      setIsLoading(false);
-      return;
-    }
-
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/vendor/all-history?page=${page}&limit=${limit}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-sheets?page=${page}&limit=${limit}`,);
       if (response.data.success === false) {
         toast.error("Failed to fetch history.");
       } else {
-        const { sheets, count } = response.data.result;
-        setHistoryPresent(sheets);
+        const { data, count } = response.data.result;
+        setHistoryPresent(data);
         setCount(count);
         setTotalPages(Math.ceil(count / limit));
       }
@@ -76,7 +59,7 @@ const History = () => {
 
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <div>
           <img
             src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734025428/Simplification_mlxmlr.png"
@@ -84,9 +67,9 @@ const History = () => {
             loading="lazy"
             className="h-8"
           />
-          <h2 className="text-2xl font-semibold mb-1"> History </h2>
+          <h2 className="text-2xl font-semibold mb-1">History</h2>
         </div>
-        <div className="text-2xl bg-orange-200 w-12 h-12 rounded-full flex justify-center items-center shadow-md"> {count}</div>
+        <div className="text-2xl bg-green-200 w-12 h-12 rounded-full flex justify-center items-center shadow-md"> {count}</div>
       </div>
       {isLoading ? (
         <div className="flex justify-center items-center py-12">
@@ -99,18 +82,17 @@ const History = () => {
               <button onClick={() => setSingleHistory(false)}>
                 <i className="fi fi-rr-angle-small-left"></i> Back
               </button>
-              <SingleHistoryData serialNumber={selectedId} />
+              <SingleHistory sheetID={selectedId} />
             </div>
           ) : (
             <>
-             
-              <div className="md:min-h-[65vh]">
 
+              <div className="md:min-h-[65vh]">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                   {historyPresent.map((item, index) => (
                     <div
                       key={index}
-                      className="bg-gradient-to-r from-[#F5DCB2] to-[#E2EBDF] p-4 rounded-lg shadow-md min-h-52 space-y-4"
+                      className={`${item.role === 'VENDOR' ? 'bg-[#E2EBDF]' : 'bg-gradient-to-r from-[#F5DCB2] to-[#E2EBDF]'} p-4 rounded-lg shadow-md min-h-52 space-y-4`}
                     >
                       <div className="mb-2">
                         {item.serialNumbers.map((serial, index) => (
@@ -118,11 +100,11 @@ const History = () => {
                             <div className="flex justify-between items-center w-full">
                               <p className="text-lg">{serial.serialNumber}</p>
                               <p
-                                className={`font-semibold mt-2 ${serial.status === "completed"
-                                  ? "text-green-600"
-                                  : serial.status === "pending"
-                                    ? "text-orange-500"
-                                    : "text-red-600"
+                                className={`font-semibold mt-2 ${serial.status === "success"
+                                    ? "text-green-600"
+                                    : serial.status === "pending"
+                                      ? "text-orange-500"
+                                      : "text-red-600"
                                   }`}
                               >
                                 {item.serialNumbers[0].status.charAt(0).toUpperCase() +
@@ -149,7 +131,7 @@ const History = () => {
                         </p>
 
                         <Link
-                          onClick={() => handleView(item.serialNumbers[0].serialNumber)}
+                          onClick={() => handleView(item._id)}
                           className="bg-gray-100 text-blue-500 px-3 py-1 rounded shadow-md hover:bg-green-500 hover:text-white transition duration-300"
                         >
                           View →
@@ -165,8 +147,8 @@ const History = () => {
                   onClick={handlePrevious}
                   disabled={currentPage === 1}
                   className={`px-4 py-2 mx-1 rounded ${currentPage === 1
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-green-500 text-white hover:bg-green-600"
+                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      : "bg-green-500 text-white hover:bg-green-600"
                     }`}
                 >
                   Previous
@@ -178,8 +160,8 @@ const History = () => {
                   onClick={handleNext}
                   disabled={currentPage === totalPages}
                   className={`px-4 py-2 mx-1 rounded ${currentPage === totalPages
-                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-green-500 text-white hover:bg-green-600"
+                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      : "bg-green-500 text-white hover:bg-green-600"
                     }`}
                 >
                   Next

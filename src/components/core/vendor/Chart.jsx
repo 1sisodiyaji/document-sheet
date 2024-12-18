@@ -10,13 +10,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const Chart = ({left,Total}) => {
 
     const data = {
-        labels: ["Used" ,"Total Assigned"],
+        labels: ["Left" ,"Total Assigned"],
         datasets: [
           {
             label: "Tasks",
             data: [left , Total],
-            backgroundColor: ["#A8E6CF", "#FFDDC1"], 
-            hoverBackgroundColor: ["#81D4A3", "#FFC5A1"],
+            backgroundColor: ["#FFDDC1", "#A8E6CF"], 
+            hoverBackgroundColor: ["#FFC5A1", "#81D4A3"],
             borderWidth: 1,
           },
         ],
@@ -36,7 +36,11 @@ const Chart = ({left,Total}) => {
 
       
   return (
-    <Doughnut data={data} options={options} />
+    <>
+    <div className='hidden md:block'> <Doughnut data={data} options={options} /> </div>
+
+    <div className='md:hidden block h-52'> <Doughnut data={data} options={options} /> </div>
+    </>
   )
 }
 

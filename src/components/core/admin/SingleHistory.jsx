@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import TimeConverter from "../../../utils/TimeConverter";
 
-const SingleHistoryData = ({ serialNumber }) => {
+const SingleHistory = ({ sheetID }) => {
   const [sheetData, setSheetData] = useState("");
 
   const handleCopy = (serialNumber) => {
@@ -51,8 +51,8 @@ const SingleHistoryData = ({ serialNumber }) => {
     const fetchSheetDeatils = async () => {
       try {
 
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/vendor/search-sheet/${serialNumber}`);
-        const data = response.data.SheetDetails;
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-sheets/${sheetID}`);
+        const data = response.data.data;
         setSheetData(data);
         toast.success("Sheet Data Fetched Successfully");
       } catch (error) {
@@ -62,12 +62,13 @@ const SingleHistoryData = ({ serialNumber }) => {
     };
 
     fetchSheetDeatils();
-  }, [serialNumber]);
+  }, [sheetID]);
 
   return (
     <>
-      <div className="flex  justify-end items-center py-6">
-         <button
+      <div className="flex  justify-between items-center py-6">
+        <button className="px-4 py-2 rounded-md bg-[#F3DFCA]"><i className="fi fi-tr-shield-trust"></i> View Prof</button>
+        <button
           onClick={() => handleGetInvoice(sheetData._id)}
           className="px-4 py-2 rounded-md bg-[#C2E9DB] text-black">
           <i className="fi fi-tr-file-invoice"></i> Get Invoice
@@ -110,4 +111,4 @@ const SingleHistoryData = ({ serialNumber }) => {
   )
 }
 
-export default SingleHistoryData
+export default SingleHistory
