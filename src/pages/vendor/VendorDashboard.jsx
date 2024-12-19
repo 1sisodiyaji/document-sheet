@@ -213,7 +213,7 @@ const VendorDashboard = () => {
                         </div>
                         <div className="md:min-h-64 flex justify-center items-center bg-green-100 rounded-lg p-6">
                           <div className="text-center">
-                            <Chart left={allocatedLeft} Total={totalAssignedSheets} />
+                            <Chart left={totalAssignedSheets - allocatedLeft} Total={totalAssignedSheets} />
                             <div className="text-4xl font-bold overflow-y-hidden">{totalSheets}</div>
                             <p className="text-sm text-gray-600">Total Sheets </p>
                           </div>

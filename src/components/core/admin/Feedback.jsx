@@ -94,15 +94,25 @@ const Feedback = () => {
                             <div
                                 onClick={() => handleToogleFeedback(feedbackItem._id)}
                                 key={feedbackItem._id}
-                                className="p-4 bg-white border border-orange-200 shadow rounded-lg w-full md:w-80 cursor-pointer"
-                            >
-                                <h3 className="text-lg font-semibold text-gray-800">{feedbackItem.name}</h3>
+                                className={`p-4 ${feedback.feedbackType === 'testimonial' ? 'bg-green-400' : 'bg-white'}border border-orange-200 shadow rounded-lg w-full md:w-80 cursor-pointer`}
+                            >   
+                            {feedback.feedbackType}
+                            {feedback.feedbackType === "testimonial" ?
+                            <>
+                            Hey
+                            </>
+                            : 
+                            <>
+                             <h3 className="text-lg font-semibold text-gray-800">{feedbackItem.name}</h3>
                                 <p className="text-sm text-gray-500">{feedbackItem.email}</p>
                                 <p className="text-sm text-gray-500">{feedbackItem.mobile}</p>
                                 <p className="mt-2 text-gray-600">{feedbackItem.message}</p>
                                 <p className="mt-2 text-xs text-gray-400">
                                     {new Date(feedbackItem.createdAt).toLocaleDateString()}
                                 </p>
+                            </>
+                            }
+                               
                             </div>
                         ))}
                     </div>

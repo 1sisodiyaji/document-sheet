@@ -68,7 +68,7 @@ const Setting = () => {
     <>
       <div className="flex flex-col">
         <img src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734190122/Simplification_1_vjsi7g.png" alt="setting" loading="lazy" className="w-12 h-12" />
-        <h2 className="text-2xl font-semibold mb-6">Your space, your settings—tailored just for you</h2>
+        <h2 className="md:text-2xl text-md font-semibold mb-6">Your space, your settings—tailored just for you</h2>
       </div>
 
       <div className="flex justify-center items-center py-8 gap-4">

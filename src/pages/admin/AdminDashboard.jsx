@@ -58,8 +58,8 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="flex h-screen z-50">
-      <div className={`fixed inset-y-0 left-0 transform bg-[#C2E9DB] md:w-96 w-80 shadow-lg p-4 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`} >
+    <div className="flex h-screen ">
+      <div className={`fixed inset-y-0 z-50 left-0 transform bg-[#C2E9DB] md:w-96 w-80 shadow-lg p-4 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`} >
         <div className="text-gray-800 mb-6 text-center">
           <h2 className="font-bold text-xl">Welcome Back,</h2>
           <p className="text-lg">Somashekar</p>
@@ -95,16 +95,16 @@ const AdminDashboard = () => {
             {isSidebarOpen ? 'X' : '☰'}
           </button>
 
-          <div className="flex justify-between items-center space-x-4 w-full p-1">
+          <div className="flex justify-between items-center space-x-2 w-full p-1">
             <input
               type="text"
               value={serialNumberData}
               onChange={(e) => setSerialNumberData(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Please Enter Serial Number "
-              className="md:w-96 w-64 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none"
+              className="md:w-96 w-64 px-4  py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none"
             />
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 border-4">
               <div
                 className="bg-red-300 px-4 py-2 text-black rounded-md text-sm cursor-pointer flex justify-center items-center"
                 onClick={handleLogout}

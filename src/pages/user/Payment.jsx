@@ -89,8 +89,9 @@ const Payment = () => {
               if (verifyResult.success) {
                 toast.success("Payment successfully verified!");
                 const sheetId = sheetID; 
+                const Name = name;
                 window.history.replaceState(null, "");
-                navigate("/feedback", { state: { sheetId } });
+                navigate("/feedback", { state: { sheetId ,Name} });
               } else {
                 toast.error("Payment verification failed!");
               }
@@ -124,19 +125,22 @@ const Payment = () => {
     loadRazorpay();
   }, [amount, name, sheetID, serialNumber, navigate]);
 
-  if (isPaymentInitialized.current) return ;
 
   return (
-    <div className="h-screen overflow-hidden flex justify-center items-center p-1">
-      <div className="bg-gradient-to-l from-[#D1E1D0] to-[#EFC989] md:py-24 md:px-40 py-6 px-12 animate-pulse rounded-xl">
-        <p className="md:text-3xl text-xl flex">
-          Processing your payment...
-          <div className="flex items-center justify-center overflow-hidden">
-            <div className="w-8 h-8 border-4 border-green-500 border-dotted rounded-full animate-spin"></div>
-          </div>
-        </p>
-      </div>
-    </div>
+    <>
+    {isPaymentInitialized.current ? 
+    <div className="h-screen flex justify-center items-center p-4 bg-[url('https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734580574/Checker_1_jwcjpl.png')] bg-cover bg-center">
+  <div className="bg-gradient-to-l from-[#D1E1D0] to-[#EFC989] py-12 px-8 md:py-24 md:px-40 animate-pulse rounded-xl shadow-lg">
+    <p className="flex items-center justify-center md:text-3xl text-xl font-semibold text-gray-800">
+      Processing your payment...
+      <span className="ml-4 w-6 h-6 md:w-8 md:h-8 border-4 border-green-500 border-dotted rounded-full animate-spin"></span>
+    </p>
+  </div>
+</div>
+:
+<p>Paymnet Failed kindly contact admin for any Queries.</p>
+  }
+</>
   );
 };
 

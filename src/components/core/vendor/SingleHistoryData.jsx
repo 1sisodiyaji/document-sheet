@@ -98,7 +98,7 @@ const SingleHistoryData = ({ serialNumber }) => {
           <div className="flex justify-between items-center">
             <p className="font-semibold text-xl">Amount :</p>   <p className="text-lg">{sheetData.amount} </p>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex flex-wrap justify-between items-center">
             <p className="font-semibold text-xl">Place :</p>   <p className="text-lg ps-2">{sheetData.place} </p>
           </div>
           <div className="flex justify-between items-center">

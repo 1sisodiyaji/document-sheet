@@ -11,51 +11,36 @@ const VendorLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [ShowPasswordData, setShowPasswordData] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
-    // Check for empty fields
     if (!email) {
-      toast("Please fill in your email.");
+      toast.error("Please enter your email.");
       return;
     }
-  
     if (!password) {
-      toast("Please fill in your password.");
+      toast.error("Please enter your password.");
       return;
     }
-  
+
     try {
       setLoading(true);
-  
-      // Send the login request
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/vendor/login`, { email, password });
-      console.log(response);
-       const { success, token } = response.data;
+      const { success, token } = response.data;
 
-       console.log(success, token)
-      // Chec k if the login was successful
-      if (success) { 
-        Cookies.set("Vendor-document-sheet-token-#VDST", token, { expires: '1d' });
+      if (success) {
+        Cookies.set("Vendor-document-sheet-token-#VDST", token, { expires: 1 });
         navigate("/vendor");
       } else {
-        // Handle failure if the success flag is false
-        setError("Login failed. Please check your credentials.");
+        toast.error("Failed to Login");
       }
     } catch (err) {
-      // Handle unexpected errors
-      setError(err.response?.data?.message || "An error occurred. Please try again.");
+      setError(err.response?.data?.message || "An unexpected error occurred. Please try again.");
     } finally {
-      // Ensure loading is always set to false
       setLoading(false);
     }
-  };
-  
-  const ShowPassword = () => {
-    setShowPasswordData(!ShowPasswordData); // Correct toggle logic
   };
 
   useEffect(() => {
@@ -67,9 +52,9 @@ const VendorLogin = () => {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Section */}
+
       <div className="md:w-1/2 hidden md:flex flex-col justify-center items-center bg-gradient-to-b from-[#EFDEC4] to-[#D1E1D0] p-8">
-        <div className="flex justify-center p-3">
+         <div className="flex justify-center p-3">
           {["S", "E", "C", "U", "R", "E"].map((letter, index) => (
             <div
               key={index}
@@ -133,10 +118,7 @@ const VendorLogin = () => {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="p-1">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -144,45 +126,44 @@ const VendorLogin = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-300 focus:outline-none"
               />
             </div>
+
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <div className="flex p-1">
                 <input
-                  type={ShowPasswordData ? 'text' : 'password'} // Correct input type toggle
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                   placeholder="Enter your password"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-300 focus:outline-none"
                 />
-                <div onClick={ShowPassword} className="mx-1 flex justify-center items-center cursor-pointer">
-                  <i className={ShowPasswordData ? 'fi fi-rr-eye' : 'fi fi-rs-crossed-eye'}></i>
+                <div onClick={() => setShowPassword(!showPassword)} className="mx-1 flex justify-center items-center cursor-pointer">
+                  <i className={showPassword ? "fi fi-rr-eye" : "fi fi-rs-crossed-eye"}></i>
                 </div>
               </div>
             </div>
+
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-2 rounded-lg font-semibold transition ${loading ? 'cursor-not-allowed bg-green-400 text-white' : 'bg-green-600 text-white hover:bg-green-700 cursor-pointer'}`}
+              className={`w-full py-2 rounded-lg font-semibold transition ${
+                loading ? "cursor-not-allowed bg-green-400 text-white" : "bg-green-600 text-white hover:bg-green-700 cursor-pointer"
+              }`}
             >
               {loading ? (
                 <div className="flex items-center justify-center overflow-y-hidden">
                   <div className="w-6 h-6 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
-                  <span className="ml-2">Welcome to Document Sheet</span>
+                  <span className="ml-2">Loading...</span>
                 </div>
               ) : (
-                'Login'
+                "Login"
               )}
             </button>
           </form>
@@ -193,3 +174,4 @@ const VendorLogin = () => {
 };
 
 export default VendorLogin;
+

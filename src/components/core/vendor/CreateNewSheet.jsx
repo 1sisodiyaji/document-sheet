@@ -183,7 +183,7 @@ const CreateNewSheet = () => {
 
   return (
     <>
-      <h1 className="text-3xl bg-gradient-to-r from-orange-400 via-green-500 to-teal-500 bg-clip-text text-transparent">
+      <h1 className="md:text-3xl text-xl md:text-start text-center bg-gradient-to-r from-orange-400 via-green-500 to-teal-500 bg-clip-text text-transparent">
         Please Fill the details of Customer
       </h1>
 

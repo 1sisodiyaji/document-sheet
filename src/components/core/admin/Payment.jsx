@@ -69,7 +69,7 @@ const Payment = () => {
         />
         <h2 className="text-2xl font-semibold mb-1">Payments</h2>
       </div>
-      <div className="text-2xl bg-green-200 w-12 h-12 rounded-full flex justify-center items-center shadow-md"> {count}</div>
+      <div className="md:text-xl text-md mb-2 bg-green-200 w-12 h-12 rounded-full flex justify-center items-center shadow-md"> {count}</div>
       </div>
      
     {isLoading ? (

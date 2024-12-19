@@ -10,7 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const Chart = ({left,Total}) => {
 
     const data = {
-        labels: ["Left" ,"Total Assigned"],
+        labels: ["Current Done" ,"Total Assigned"],
         datasets: [
           {
             label: "Tasks",
