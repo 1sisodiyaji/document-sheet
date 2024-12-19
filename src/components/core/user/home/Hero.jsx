@@ -40,7 +40,7 @@ const Hero = () => {
           </div>
           <div className=" lg:mt-16 lg:col-span-6 flex justify-end items-end">
             <img
-              src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734587631/Group_15_1_vxoqtz.png'}
+              src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734618574/Group_15_1_vxoqtz_bpyt44.webp'}
               width={1000}
               height={1000}
               loading="lazy"
