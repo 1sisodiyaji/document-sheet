@@ -21,7 +21,7 @@ const ScanTabs = () => {
     setError(null); // Reset error state before making a new request
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/search-sheet`, {
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/search-sheet`, {
         serialNumber
       });
 
@@ -41,15 +41,8 @@ const ScanTabs = () => {
   };
 
   return (
-    <section className="md:my-24  p-1">
-      <div className="max-w-xl mx-auto flex justify-center space-x-6 bg-orange-100 p-3 rounded-full py-4">
-        <button className="md:px-6 py-2 px-3 font-semibold md:text-sm text-xs rounded-lg transition-all bg-orange-400 text-white hover:bg-orange-500">
-          Search by Serial Number
-        </button>
-      </div>
-
-      {/* Tab Content */}
-      <div className="py-16 p-1">
+    <section className="md:my-24  p-1"> 
+      <div className="md:py-16 py-12 p-1">
         <div className="max-w-7xl mx-auto rounded-lg md:p-8 p-2 flex justify-center border-dashed border-2 border-orange-300">
           <div className="w-1/3 hidden md:block">
             <Player autoplay loop src={QRCODEANIMATION} style={{ height: "auto", width: "100%" }} />

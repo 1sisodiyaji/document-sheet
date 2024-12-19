@@ -104,7 +104,7 @@ const AdminDashboard = () => {
               placeholder="Please Enter Serial Number "
               className="md:w-96 w-64 px-4  py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-300 focus:outline-none"
             />
-            <div className="flex items-center space-x-2 border-4">
+            <div className="flex items-center space-x-2">
               <div
                 className="bg-red-300 px-4 py-2 text-black rounded-md text-sm cursor-pointer flex justify-center items-center"
                 onClick={handleLogout}
