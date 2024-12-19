@@ -89,7 +89,7 @@ const History = () => {
         <div className="md:text-xl text-sm bg-orange-200 w-12 h-12 rounded-full flex justify-center items-center shadow-md mb-2"> {count}</div>
       </div>
       {isLoading ? (
-        <div className="flex justify-center items-center py-12">
+        <div className="flex justify-start items-center py-12">
           <Skeleton />
         </div>
       ) : historyPresent && historyPresent.length > 0 ? (
