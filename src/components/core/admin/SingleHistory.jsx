@@ -5,7 +5,7 @@ import TimeConverter from "../../../utils/TimeConverter";
 
 const SingleHistory = ({ sheetID }) => {
   const [sheetData, setSheetData] = useState("");
-
+  const [isloading , setIsLoading] = useState(false);
   const handleCopy = (serialNumber) => {
     navigator.clipboard.writeText(serialNumber)
       .then(() => {
@@ -50,14 +50,18 @@ const SingleHistory = ({ sheetID }) => {
   useEffect(() => {
     const fetchSheetDeatils = async () => {
       try {
-
+        setIsLoading(true);
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-sheets/${sheetID}`);
         const data = response.data.data;
         setSheetData(data);
         toast.success("Sheet Data Fetched Successfully");
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching vendor details:", error);
         toast.error("Failed to fetch vendor details.");
+        setIsLoading(false);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -76,7 +80,44 @@ const SingleHistory = ({ sheetID }) => {
       </div>
 
       <div className="flex  flex-col items-center ">
-        <div className="min-w-4xl p-6  min-h-96 space-y-6 border-2 border-green-200 rounded-xl shadow-md">
+
+        {isloading 
+        ?
+      <>
+      <div className="min-w-4xl p-6  min-h-96 space-y-6 border-2 border-green-200 rounded-xl shadow-md">
+          {sheetData.serialNumbers && sheetData.serialNumbers.map((serial, index) => (
+            <div key={index} className="flex justify-between items-center">
+              <p className="font-semibold text-xl">Serial Number {index + 1}:</p>
+              <div className="flex items-center gap-2">
+              <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+                <i
+                  className="fi fi-tr-copy-alt cursor-pointer"
+                  onClick={() => handleCopy(serial.serialNumber)}
+                ></i>
+              </div>
+            </div>
+          ))}
+
+          <div className="flex justify-between items-center">
+            <p className="font-semibold text-xl">Name :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+          </div>
+          <div className="flex justify-between items-center">
+            <p className="font-semibold text-xl">Reason :</p>  <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+          </div>
+          <div className="flex justify-between items-center">
+            <p className="font-semibold text-xl">Amount :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+          </div>
+          <div className="flex flex-wrap justify-between items-center">
+            <p className="font-semibold text-xl">Place :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+          </div>
+          <div className="flex justify-between items-center">
+            <p className="font-semibold text-xl">Date :</p>  <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+          </div>
+        </div>
+      </>
+      :
+      <>
+      <div className="min-w-4xl p-6  min-h-96 space-y-6 border-2 border-green-200 rounded-xl shadow-md">
           {sheetData.serialNumbers && sheetData.serialNumbers.map((serial, index) => (
             <div key={index} className="flex justify-between items-center">
               <p className="font-semibold text-xl">Serial Number {index + 1}:</p>
@@ -106,6 +147,8 @@ const SingleHistory = ({ sheetID }) => {
             <p className="font-semibold text-xl">Date :</p>   <p className="text-lg"> <TimeConverter date={sheetData.date} /></p>
           </div>
         </div>
+      </>}
+        
       </div>
     </>
   )

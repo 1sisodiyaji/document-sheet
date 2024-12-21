@@ -71,11 +71,8 @@ const History = () => {
         </div>
         <div className="md:text-xl text-md mb-2 bg-green-200 w-12 h-12 rounded-full flex justify-center items-center shadow-md"> {count}</div>
       </div>
-      {isLoading ? (
-        <div className="flex justify-center items-center py-12">
-          <Skeleton />
-        </div>
-      ) : historyPresent && historyPresent.length > 0 ? (
+      {isLoading ? ( <Skeleton limit= {4}/> ) :
+       historyPresent && historyPresent.length > 0 ? (
         <>
           {singleHistory ? (
             <div className="my-2">
@@ -113,8 +110,7 @@ const History = () => {
                             </div>
                           </div>
                         ))}
-                      </div>
-
+                      </div> 
                       <div className="flex justify-between items-center">
                         <p className="text-md text-black">{item.name}</p>
                         <p className="text-lg text-black bg-white px-4 py-2 rounded-full w-12 h-12 flex justify-center items-center">

@@ -6,7 +6,7 @@ import Skeleton from "../../common/Skeleton";
 
 const RecentsSheet = () => {
     const [recents, setRecents] = useState("");
-    const[loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         const token = Cookies.get("Vendor-document-sheet-token-#VDST");
         if (!token) {
@@ -43,43 +43,45 @@ const RecentsSheet = () => {
         fetchHistory();
     }, []);
 
-    if(loading){
-         <Skeleton/>
-    }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            {recents ? recents.slice(0, 3).map((item, index) => (
-                <div  key={index}
-                    className="bg-gradient-to-r from-[#F5DCB2] to-[#E2EBDF] p-4 rounded-lg shadow-md space-y-4"
-                >
-                    {item.serialNumbers.map((serial, idx) => (
-                        <div key={idx} className="flex justify-between items-center">
-                            <p className="text-md font-semibold">{serial.serialNumber}</p>
-                            <p
-                                className={`font-semibold ${serial.status === "completed"
-                                    ? "text-green-600"
-                                    : serial.status === "pending"
-                                        ? "text-orange-500"
-                                        : "text-red-600"
-                                    }`}
+        <>
+            {loading ? <Skeleton limit={3} /> :
+                <>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                        {recents ? recents.slice(0, 3).map((item, index) => (
+                            <div key={index}
+                                className="bg-gradient-to-r from-[#F5DCB2] to-[#E2EBDF] p-4 rounded-lg shadow-md space-y-4"
                             >
-                                {serial.status.charAt(0).toUpperCase() + serial.status.slice(1)}
-                            </p>
-                        </div>
-                    ))}
-                    <div className="flex justify-between items-center">
-                        <p className="text-lg font-bold">{item.name}</p>
-                        <p className="text-sm text-gray-700">Amount: ₹{item.amount}</p>
+                                {item.serialNumbers.map((serial, idx) => (
+                                    <div key={idx} className="flex justify-between items-center">
+                                        <p className="text-md font-semibold">{serial.serialNumber}</p>
+                                        <p
+                                            className={`font-semibold ${serial.status === "completed"
+                                                ? "text-green-600"
+                                                : serial.status === "pending"
+                                                    ? "text-orange-500"
+                                                    : "text-red-600"
+                                                }`}
+                                        >
+                                            {serial.status.charAt(0).toUpperCase() + serial.status.slice(1)}
+                                        </p>
+                                    </div>
+                                ))}
+                                <div className="flex justify-between items-center">
+                                    <p className="text-lg font-bold">{item.name}</p>
+                                    <p className="text-sm text-gray-700">Amount: ₹{item.amount}</p>
+                                </div>
+                            </div>
+                        ))
+                            :
+                            <>
+                                <div className="capitalize"> Hey you Have not Created any sheet Yet ?</div>
+                            </>
+                        }
                     </div>
-                </div>
-            ))
-            :
-            <>
-            <div className="capitalize"> Hey you Have not Created any sheet Yet ?</div>
-            </>
-            }
-        </div>
+                </>}
+        </>
     )
 }
 

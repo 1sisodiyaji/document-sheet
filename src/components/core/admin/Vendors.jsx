@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import axios from "axios";
-import Skeleton from "../../common/Skeleton";
+import axios from "axios"; 
 import { Link } from "react-router-dom";
 import SingleVendor from "./SingleVendor";
 
@@ -62,16 +61,16 @@ const Vendors = () => {
       toast.error("Vendor ID not found");
       return;
     }
-  
+
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/api/admin/update-vendor`,
         { vendorID } // Pass vendorID in the request body
       );
-  
+
       if (response.data.success) {
         toast.success("Vendor details updated successfully!");
-        window.location.reload();
+        setCurrentPage(1);
       } else {
         toast.error(response.data.message || "Failed to update vendor details.");
       }
@@ -82,7 +81,7 @@ const Vendors = () => {
       );
     }
   };
-  
+
 
   return (
     <div>
@@ -99,8 +98,14 @@ const Vendors = () => {
         <div className="md:text-2xl bg-green-200 w-12 h-12 rounded-full flex justify-center items-center shadow-md text-sm "> {count}</div>
       </div>
       {isLoading ? (
-        <div className="flex justify-center items-center py-12">
-          <Skeleton />
+        <div className="flex  flex-wrap gap-3 py-12">
+          {[...Array(limit)].map((_, index) => (
+                <div key={index} className="w-full  rounded-md">
+                  <div className="w-full">  
+    <div className="h-[8vh] w-full bg-gray-300 animate-pulse"></div>
+                  </div>
+                </div>
+            ))}
         </div>
       ) : vendorPresent && vendorPresent.length > 0 ? (
         <>
@@ -159,7 +164,7 @@ const Vendors = () => {
                             View →
                           </Link>
 
-                          <p onClick={ () =>handleUpdateVendorDetails(item._id)} className="hover:underline cursor-pointer hover:text-orange-400 md:text-sm text-xs">Reset <i className="fi fi-rr-rotate-right"></i> </p>
+                          <p onClick={() => handleUpdateVendorDetails(item._id)} className="hover:underline cursor-pointer hover:text-orange-400 md:text-sm text-xs">Reset <i className="fi fi-rr-rotate-right"></i> </p>
 
                         </div>
 

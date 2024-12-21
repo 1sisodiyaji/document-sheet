@@ -9,6 +9,8 @@ import Vendors from "../../components/core/admin/Vendors";
 import Payment from "../../components/core/admin/Payment";
 import axios from "axios";
 import Feedback from "../../components/core/admin/Feedback";
+import Sheet from "../../components/core/admin/Sheet";
+import SearchHistory from "../../components/core/admin/SearchHistory";
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,7 +18,6 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
   const [serialNumberData, setSerialNumberData] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       if (serialNumberData.trim() === "") {
@@ -39,6 +40,8 @@ const AdminDashboard = () => {
     { name: "Vendors", id: "vendor", img1: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734190122/image_61_fakdmh.png", img2: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734190122/Simplification_2_agko2f.png" },
     { name: "Setting", id: "setting", img1: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734190122/Simplification_1_vjsi7g.png", img2: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734190149/Simplification_3_tzzeyt.png" },
     { name: "Feedback", id: "feedback", img1: "https://res.cloudinary.com/dbqq41bpc/image/upload/v1734547468/feedback_jretkt.png", img2: "https://res.cloudinary.com/dbqq41bpc/image/upload/v1734547468/feedback_jretkt.png" },
+    { name: "Sheet", id: "sheet", img1: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733941760/image_19_gsh3ic.png", img2: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733941760/image_19_gsh3ic.png" },
+
   ];
 
   const handleLogout = async() => {
@@ -128,12 +131,11 @@ const AdminDashboard = () => {
                   ✕
                 </button>
               </div>
-              {/* serial number data model */}
+             <SearchHistory serialNumber={ serialNumberData}/>
             </div>
           </div>
         )}
 
-        {/* Content Area */}
         <div className="mt-6">
           {activeTab === "home" && (<Home/>)}
 
@@ -147,6 +149,7 @@ const AdminDashboard = () => {
  
           {activeTab === "feedback" && (<Feedback/>)}
           
+          {activeTab === "sheet" && (<Sheet/>)}
         </div>
       </div>
     </div>

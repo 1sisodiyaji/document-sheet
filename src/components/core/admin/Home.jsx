@@ -52,6 +52,7 @@ const Home = () => {
 
     const getFeedback = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-feedback`);
         if (response.data.success === true) {
           setFeedback(response.data.data);
@@ -59,6 +60,9 @@ const Home = () => {
         }
       } catch (error) {
         console.log(error);
+        setLoading(false); 
+      }finally{
+        setLoading(false);
       }
     }
 
@@ -138,8 +142,7 @@ const Home = () => {
   if (loading) {
     return (
       <div className="h-screen flex flex-col justify-center items-center">
-        <Skeleton/>
-        <p>Loading graphs...</p>
+        <Skeleton limit= {4}/> 
       </div>
     );
   }

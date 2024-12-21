@@ -74,7 +74,7 @@ const Payment = () => {
      
     {isLoading ? (
       <div className="flex justify-center items-center py-12">
-        <Skeleton />
+        <Skeleton  limit = {4}/>
       </div>
     ) : transcationPresent && transcationPresent.length > 0 ? (
       <>

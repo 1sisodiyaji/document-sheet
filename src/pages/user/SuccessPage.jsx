@@ -1,9 +1,10 @@
 import React, { useState, useEffect ,useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 
 const SuccessPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { sheetId } = location.state || {};
   const { Name } = location.state || 'Unknown';
@@ -118,14 +119,22 @@ const SuccessPage = () => {
     }
   };
 
+  const ShiftToHome = (route) => {
+    window.history.replaceState(null, "");
+   navigate(route);
+  }
+
   useEffect(() => {
-    if (!sheetId) return;
-   
+    if (!sheetId) {
+      navigate('/');
+      return;
+    }
+   console.log(sheetId);
     if (hasFetched.current) return;
     hasFetched.current = true;
     DownloadSheet(sheetId);
     DownloadBill(sheetId);
-  }, [sheetId]);
+  }, [sheetId ,navigate]);
 
   return (
     <>
@@ -194,14 +203,14 @@ const SuccessPage = () => {
 
           {/* Bottom Buttons */}
           <div className="flex justify-center mt-12 space-x-6">
-            <Link to={'/create-new-sheet'} className="flex flex-col justify-center items-center bg-yellow-100 p-6 rounded-xl shadow-md hover:bg-yellow-200 transition w-1/2 h-64 cursor-pointer">
+            <div  onClick={() => ShiftToHome('/create-new-sheet')} className="flex flex-col justify-center items-center bg-yellow-100 p-6 rounded-xl shadow-md hover:bg-yellow-200 transition w-1/2 h-64 cursor-pointer">
               <img src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733941760/image_19_gsh3ic.png" alt="new sheet" loading='lazy' />
               <h1 className="text-gray-800 font-medium md:text-3xl  overflow-hidden mt-4">Create New Sheet</h1>
-            </Link>
-            <Link to={'/'} className="flex flex-col justify-center items-center bg-gray-100 p-6 rounded-xl shadow-md hover:bg-gray-200 transition w-1/2 h-64 cursor-pointer">
+            </div>
+            <div onClick={() => ShiftToHome('/')} className="flex flex-col justify-center items-center bg-gray-100 p-6 rounded-xl shadow-md hover:bg-gray-200 transition w-1/2 h-64 cursor-pointer">
               <img src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733940865/Simplification_1_hkqulx.png" alt="home" loading='lazy' />
               <h1 className="text-gray-800 font-medium md:text-3xl overflow-hidden mt-4">Back To Home</h1>
-            </Link>
+            </div>
           </div>
 
         </div>

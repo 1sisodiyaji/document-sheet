@@ -90,7 +90,7 @@ const History = () => {
       </div>
       {isLoading ? (
         <div className="flex justify-start items-center py-12">
-          <Skeleton />
+          <Skeleton  limit= {4}/>
         </div>
       ) : historyPresent && historyPresent.length > 0 ? (
         <>
