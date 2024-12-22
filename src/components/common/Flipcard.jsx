@@ -10,7 +10,7 @@ const FlipCard = ({ title, text, src }) => {
 
   return (
     <div
-      className={`relative md:w-[40vw] md:h-64 h-72 w-96  rounded-lg transition-transform duration-500 overflow-y-hidden transform ${
+      className={`relative md:w-[40vw] h-72 w-96  rounded-lg transition-transform duration-500 overflow-y-hidden transform ${
         isFlipped ? "rotate-y-180" : ""
       } `}
     >
@@ -21,7 +21,7 @@ const FlipCard = ({ title, text, src }) => {
         }`}
       >
         <article className="space-y-3 md:py-6 ">
-          <h1 className="text-3xl font-semibold">{title}</h1>
+          <h1 className="text-3xl font-semibold p-1">{title}</h1>
           <p className="text-xl font-regular">{text}</p>
         </article>
         <div className="w-full flex justify-end">
