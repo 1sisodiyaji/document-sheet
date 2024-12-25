@@ -8,7 +8,7 @@ const Empowering = () => {
 
 < section className="flex md:flex-row flex-col justify-around items-center md:w-[80vw] mx-auto" >
   <article className="space-y-6 md:w-1/2" >
-    <h1 className="md:text-3xl text-xl font-semibold">
+    <h1 className="md:text-3xl text-xl font-semibold py-1">
       Empowering Your Transactions, Simplifying Processes
     </h1>
     <p className="md:text-lg">

@@ -343,7 +343,7 @@ const CreateNewSheet = () => {
               </select>
               {errors.NumberOfSheet && <p className="text-red-500 text-xs">{errors.NumberOfSheet}</p>}
             </div>
-            <div className="flex justify-center items-center md:mt-0 mt-4">
+            <div className="flex justify-center items-center md:mt-0 mt-4 p-1">
               <button
                 disabled={loading}
                 onClick={onHandleDocCreated}

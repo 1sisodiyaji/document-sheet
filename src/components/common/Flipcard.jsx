@@ -10,13 +10,13 @@ const FlipCard = ({ title, text, src }) => {
 
   return (
     <div
-      className={`relative md:w-[40vw] h-72 w-96  rounded-lg transition-transform duration-500 overflow-y-hidden transform ${
+      className={`relative md:w-[45vw] h-72 w-96   rounded-lg transition-transform duration-500  transform ${
         isFlipped ? "rotate-y-180" : ""
       } `}
     >
       {/* Front Side */}
       <div
-        className={`absolute inset-0 bg-gradient-to-l from-[#D1E1D0] to-[#EFC989] p-4 rounded-lg transition-opacity duration-500 flex flex-col justify-center items-center overflow-y-hidden ${
+        className={`absolute inset-0 bg-gradient-to-l from-[#D1E1D0] to-[#EFC989] p-3 rounded-lg transition-opacity duration-500 flex flex-col justify-center items-center  ${
           isFlipped ? "opacity-0" : "opacity-100"
         }`}
       >

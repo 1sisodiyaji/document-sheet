@@ -87,8 +87,6 @@ const CreateNewSheet = () => {
         return;
       }
 
-      toast.success('Sheet created successfully!');
-
       const sheetID = response.data.data._id;
       const amount = response.data.data.amount;
       const name = docData.UserName;
@@ -266,7 +264,7 @@ const CreateNewSheet = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center p-1">
                 <button
                   disabled={loading}
                   onClick={onHandleDocCreated}
@@ -275,7 +273,7 @@ const CreateNewSheet = () => {
                 >
                   {loading ? (
                     <div className="flex items-center justify-center">
-                      <div className="w-6 h-6 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
                       <span className="ml-2">Creating...</span>
                     </div>
                   ) : (

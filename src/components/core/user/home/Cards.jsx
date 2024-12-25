@@ -15,21 +15,21 @@ const Cards = () => {
    <section className='my-12'>
 
 <article>
-  <h1 className='md:text-4xl text-xl font-semibold text-center overflow-y-hidden'>Why Choose Document Sheet !!</h1>
+  <h1 className='md:text-4xl text-xl font-semibold text-center p-1'>Why Choose Document Sheet !!</h1>
 </article>
 
-<section className='flex flex-wrap justify-center items-center md:py-12 gap-6 p-1 overflow-y-hidden'>
+<section className='flex flex-wrap justify-center items-center md:py-12  gap-6  p-1'>
 
   <motion.div initial="hiddenLeft" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.8 }} variants={animationVariants} >
-    <FlipCard title={'Digital Document Creation'} text={'Effortlessly create secure, standardized document sheets tailored to your real estate needs.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732427156/agreement_kowcaf.png'} />
+    <FlipCard title={'Digital Document'} text={'Effortlessly create secure, standardized document sheets tailored to your real estate needs.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732427156/agreement_kowcaf.png'} />
   </motion.div>
 
   <motion.div initial="hiddenRight" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.8 }} variants={animationVariants} >
-    <FlipCard title={'Integrated QR  & Serial Number'} text={'Each document includes a unique QR code and serial number, ensuring easy digital access to your data.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732426939/qr-code_1_gjvyr7.png'} />
+    <FlipCard title={'Integrated QR Code'} text={'Each document includes a unique QR code and serial number, ensuring easy digital access to your data.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732426939/qr-code_1_gjvyr7.png'} />
   </motion.div>
 
   <motion.div initial="hiddenLeft" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.8 }} variants={animationVariants} >
-    <FlipCard title={'Secure Data Storage & Access'} text={'Enjoy peace of mind with secure storage,accessible only to authorized users for complete protection.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732427014/folder_d3xpkj.png'} />
+    <FlipCard title={'Secure Data Storage'} text={'Enjoy peace of mind with secure storage,accessible only to authorized users for complete protection.'} src={'https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732427014/folder_d3xpkj.png'} />
   </motion.div>
 
   <motion.div initial="hiddenRight" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.8 }} variants={animationVariants}>

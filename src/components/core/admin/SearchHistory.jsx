@@ -46,8 +46,7 @@ const SearchHistory = ({ serialNumber }) => {
   };
 
   useEffect(() => {
-    const fetchSheetDetails = async () => {
-        console.log(`${process.env.REACT_APP_BASE_URL}/api/admin/search-serial-number/${serialNumber}`)
+    const fetchSheetDetails = async () => { 
       try {
         setIsLoading(true);
         const response = await axios.get( 
@@ -69,7 +68,7 @@ const SearchHistory = ({ serialNumber }) => {
 
   return (
     <div>
-      <div className="flex justify-between items-center py-6">
+      <div className="flex justify-between items-center rounded-md mb-2">
         <button className="px-4 py-2 rounded-md bg-[#F3DFCA]">
           <i className="fi fi-tr-shield-trust"></i> View Proof
         </button>
@@ -82,7 +81,7 @@ const SearchHistory = ({ serialNumber }) => {
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="min-w-4xl p-6 min-h-96 space-y-6 border-2 border-green-200 rounded-xl shadow-md">
+        <div className="min-w-4xl p-4 min-h-96 space-y-2 border-2 border-green-200 rounded-xl shadow-md">
           {isLoading ? (
             <>
               {[...Array(5)].map((_, index) => (
@@ -97,10 +96,10 @@ const SearchHistory = ({ serialNumber }) => {
                 {sheetData.serialNumbers.map((serial, index) => (
                   <div key={index} className="flex justify-between items-center">
                     <p className="font-semibold text-xl">
-                      Serial Number {index + 1}:
+                      Serial Number {index + 1} :
                     </p>
                     <div className="flex items-center gap-2">
-                      <p className="text-lg">{serial.serialNumber}</p>
+                      <p className="text-md">{serial.serialNumber}</p>
                       <i
                         className="fi fi-tr-copy-alt cursor-pointer"
                         onClick={() => handleCopy(serial.serialNumber)}
@@ -109,32 +108,32 @@ const SearchHistory = ({ serialNumber }) => {
                   </div>
                 ))}
                 <div className="flex justify-between items-center">
-                  <p className="font-semibold text-xl">Name:</p>
-                  <p className="text-lg">{sheetData.name || "N/A"}</p>
+                  <p className="font-semibold text-xl">Name :</p>
+                  <p className="text-md">{sheetData.name || "N/A"}</p>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="font-semibold text-xl">Reason:</p>
-                  <p className="text-lg">{sheetData.reason || "N/A"}</p>
+                  <p className="font-semibold text-xl">Reason :</p>
+                  <p className="text-md">{sheetData.reason || "N/A"}</p>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="font-semibold text-xl">Amount:</p>
-                  <p className="text-lg">{sheetData.amount || "N/A"}</p>
+                  <p className="font-semibold text-xl">Amount :</p>
+                  <p className="text-md">{sheetData.amount || "N/A"}</p>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="font-semibold text-xl">Role:</p>
-                  <p className="text-lg">{sheetData.role || "N/A"}</p>
+                  <p className="font-semibold text-xl">Role :</p>
+                  <p className="text-md">{sheetData.role || "N/A"}</p>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="font-semibold text-xl">payment:</p>
-                  <p className="text-lg">{sheetData.payment ? 'Completed' : 'Failed' || "N/A"}</p>
+                  <p className="font-semibold text-xl">payment :</p>
+                  <p className={`text-md ${sheetData.payment ? 'text-green-500' : 'text-red-500'}`}>{sheetData.payment ? 'Completed' : 'Failed' || "N/A"}</p>
                 </div>
                 <div className="flex flex-wrap justify-between items-center">
-                  <p className="font-semibold text-xl">Place:</p>
-                  <p className="text-lg">{sheetData.place || "N/A"}</p>
+                  <p className="font-semibold text-xl">Place :</p>
+                  <p className="text-md">{sheetData.place || "N/A"}</p>
                 </div>
                 <div className="flex justify-between items-center">
-                  <p className="font-semibold text-xl">Date:</p>
-                  <p className="text-lg">
+                  <p className="font-semibold text-xl">Date :</p>
+                  <p className="text-md">
                     <TimeConverter date={sheetData.date} />
                   </p>
                 </div>

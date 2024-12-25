@@ -8,7 +8,7 @@ const Scan = () => {
         <section className='flex md:flex-row flex-col justify-around items-center md:w-[80vw] max-w-screen'>
 
           <article className='space-y-6 md:w-1/2 '>
-            <h1 className='md:text-3xl text-xl font-semibold'>Instant Access with Just a Scan</h1>
+            <h1 className='md:text-3xl text-xl font-semibold py-1'>Instant Access with Just a Scan</h1>
             <p className='md:text-lg '>Say goodbye to paper trails. Our integrated QR code technology ensures <br /> that your documents are accessibleanytime, <br /> anywhere—fast, secure, and reliable.</p>
 
             <Link to="/scan-qr" className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-3xl bg-[#219B9D] hover:bg-[#279193] hover:text-black group focus:ring-2 focus:ring-green-300">

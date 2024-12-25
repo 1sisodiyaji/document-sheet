@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import toast from "react-hot-toast";
 import Skeleton from "../../common/Skeleton";
+import TimeConverter from "../../../utils/TimeConverter";
 
 const Feedback = () => {
     const [feedback, setFeedback] = useState([]);
@@ -74,7 +75,7 @@ const Feedback = () => {
         <>
             <div className="flex justify-between items-center mb-2">
                 <h1 className="text-2xl font-semibold">Feedbacks</h1>
-                <p className="w-8 h-8 rounded-full bg-green-200 flex justify-center items-center">{feedbackCount}</p>
+                <p className="w-10 h-10 rounded-full bg-green-200 flex justify-center items-center p-1">{feedbackCount}</p>
             </div>
             {isLoading ? ( 
                 <div className="flex flex-wrap gap-4">
@@ -126,7 +127,7 @@ const Feedback = () => {
                                         <p className="text-sm text-gray-500">{feedbackItem.mobile}</p>
                                         <p className="mt-2 text-gray-600">{feedbackItem.message}</p>
                                         <p className="mt-2 text-xs text-gray-400">
-                                            {new Date(feedbackItem.createdAt).toLocaleDateString()}
+                                            <TimeConverter date = {feedbackItem.createdAt} /> 
                                         </p>
                                     </>
                                 )}

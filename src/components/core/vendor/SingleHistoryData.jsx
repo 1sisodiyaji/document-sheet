@@ -68,7 +68,7 @@ const SingleHistoryData = ({ serialNumber }) => {
 
   return (
     <>
-      <div className="flex  justify-end items-center py-6">
+      <div className="flex  justify-end items-center py-2">
          <button
           onClick={() => handleGetInvoice(sheetData._id)}
           className="px-4 py-2 rounded-md bg-[#C2E9DB] text-black">
@@ -80,10 +80,10 @@ const SingleHistoryData = ({ serialNumber }) => {
       {isloading 
         ?
       <>
-      <div className="min-w-4xl p-6  min-h-96 space-y-6 border-2 border-green-200 rounded-xl shadow-md">
+      <div className="min-w-4xl p-6  min-h-96 space-y-2 border-2 border-green-200 rounded-xl shadow-md">
           {sheetData.serialNumbers && sheetData.serialNumbers.map((serial, index) => (
             <div key={index} className="flex justify-between items-center">
-              <p className="font-semibold text-xl">Serial Number {index + 1}:</p>
+              <p className="font-semibold text-md">Serial Number {index + 1}:</p>
               <div className="flex items-center gap-2">
               <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
                 <i
@@ -95,29 +95,29 @@ const SingleHistoryData = ({ serialNumber }) => {
           ))}
 
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Name :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+            <p className="font-semibold text-md">Name :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Reason :</p>  <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+            <p className="font-semibold text-md">Reason :</p>  <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Amount :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+            <p className="font-semibold text-md">Amount :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
           </div>
           <div className="flex flex-wrap justify-between items-center">
-            <p className="font-semibold text-xl">Place :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+            <p className="font-semibold text-md">Place :</p>   <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Date :</p>  <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
+            <p className="font-semibold text-md">Date :</p>  <p className="w-[12vw] h-[4vh] animate-pulse bg-gray-400"></p>
           </div>
         </div>
       </>
       :
-        <div className="min-w-4xl p-6  min-h-96 space-y-6 border-2 border-green-200 rounded-xl shadow-md">
+        <div className="min-w-4xl p-2  min-h-96 space-y-6 border-2 border-green-200 rounded-xl shadow-md">
           {sheetData.serialNumbers && sheetData.serialNumbers.map((serial, index) => (
             <div key={index} className="flex justify-between items-center">
-              <p className="font-semibold text-xl">Serial Number {index + 1}:</p>
+              <p className="font-semibold text-md">Serial Number {index + 1}:</p>
               <div className="flex items-center gap-2">
-                <p className="text-lg">{serial.serialNumber}</p>
+                <p className="text-md">{serial.serialNumber}</p>
                 <i
                   className="fi fi-tr-copy-alt cursor-pointer"
                   onClick={() => handleCopy(serial.serialNumber)}
@@ -127,19 +127,19 @@ const SingleHistoryData = ({ serialNumber }) => {
           ))}
 
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Name :</p>   <p className="text-lg">{sheetData.name} </p>
+            <p className="font-semibold text-md">Name :</p>   <p className="text-md">{sheetData.name} </p>
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Reason :</p>   <p className="text-lg"> {sheetData.reason} </p>
+            <p className="font-semibold text-md">Reason :</p>   <p className="text-md"> {sheetData.reason} </p>
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Amount :</p>   <p className="text-lg">{sheetData.amount} </p>
+            <p className="font-semibold text-md">Amount :</p>   <p className="text-md">{sheetData.amount} </p>
           </div>
           <div className="flex flex-wrap justify-between items-center">
-            <p className="font-semibold text-xl">Place :</p>   <p className="text-lg ps-2">{sheetData.place} </p>
+            <p className="font-semibold text-md">Place :</p>   <p className="text-md ps-2">{sheetData.place} </p>
           </div>
           <div className="flex justify-between items-center">
-            <p className="font-semibold text-xl">Date :</p>   <p className="text-lg"> <TimeConverter date={sheetData.date} /></p>
+            <p className="font-semibold text-md">Date :</p>   <p className="text-md"> <TimeConverter date={sheetData.date} /></p>
           </div>
         </div>
 }

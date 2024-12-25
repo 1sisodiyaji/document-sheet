@@ -34,7 +34,7 @@ const FiveCards = () => {
             viewport={{ once: true }}
             className="flex flex-col justify-center items-center w-96 min-h-48 bg-green-200 rounded-md shadow-lg"
           >
-            <h1 className="w-8 h-8 bg-orange-200 flex justify-center items-center rounded-full">1</h1>
+            <h1 className="w-8 h-8 bg-orange-200 flex justify-center items-center rounded-full p-1">1</h1>
             <img
               src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733941760/image_19_gsh3ic.png"
               alt="creating"
@@ -53,7 +53,7 @@ const FiveCards = () => {
             viewport={{ once: true }}
             className="flex flex-col justify-center items-center w-96 min-h-48 bg-orange-200 rounded-md shadow-lg"
           >
-            <h1 className="w-8 h-8 bg-white flex justify-center items-center rounded-full">2</h1>
+            <h1 className="w-8 h-8 bg-white flex justify-center items-center rounded-full p-1">2</h1>
             <img
               src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734194029/image_16_iokvq8.png"
               alt="payment"
@@ -72,7 +72,7 @@ const FiveCards = () => {
             viewport={{ once: true }}
             className="flex flex-col justify-center items-center w-96 min-h-48 border-2 border-slate-200 rounded-md shadow-lg"
           >
-            <h1 className="w-8 h-8 bg-orange-200 flex justify-center items-center rounded-full">3</h1>
+            <h1 className="w-8 h-8 bg-orange-200 flex justify-center items-center rounded-full p-1">3</h1>
             <img
               src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734190122/Simplification_2_agko2f.png"
               alt="feedback"
@@ -94,7 +94,7 @@ const FiveCards = () => {
             viewport={{ once: true }}
             className="flex flex-col justify-center items-center w-96 min-h-48 border-2 border-green-200 rounded-md shadow-lg"
           >
-            <h1 className="w-8 h-8 bg-orange-200 flex justify-center items-center rounded-full">4</h1>
+            <h1 className="w-8 h-8 bg-orange-200 flex justify-center items-center rounded-full p-1">4</h1>
             <img
               src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734025428/Simplification_mlxmlr.png"
               alt="history"

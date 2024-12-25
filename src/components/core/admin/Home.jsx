@@ -3,6 +3,7 @@ import ChartComponent from "../../common/Chart";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Skeleton from "../../common/Skeleton";
+import TimeConverter from "../../../utils/TimeConverter";
 
 const Home = () => {
   const [userGraphData, setUserGraphData] = useState(null);
@@ -190,7 +191,7 @@ const Home = () => {
         <div>
           <div className="flex justify-between items-center mb-2">
             <h1 className="text-2xl font-semibold">Feedbacks</h1>
-            <p className="w-8 h-8 rounded-full bg-green-200 flex justify-center items-center">{count}</p>
+            <p className="w-10 h-10 rounded-full bg-green-200 flex justify-center items-center p-1">{count}</p>
           </div>
 
           <div className="flex flex-wrap justify-end gap-4">
@@ -198,14 +199,12 @@ const Home = () => {
             {feedback  && feedback.map((feedback, index) => (
               <div
                 key={feedback._id}
-                className={`p-4 bg-white border border-orange-200 shadow rounded-lg w-full ${index === 2 ? 'md:w-full' : 'md:w-64'}`}
+                className={` text-black p-4 ${feedback.feedbackType === 'feedback' ? 'bg-white border border-orange-200 ' : 'bg-green-200 border border-green-200 '} shadow rounded-lg w-full ${index === 2 ? 'md:w-full' : 'md:w-64'}`}
               >
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{feedback.name}</h3>
-                <p className="text-sm text-gray-500"><i className="fi fi-sr-envelope text-gray-900"></i> {feedback.email}</p>
-                <p className="text-sm text-gray-500"><i className="fi fi-sr-phone-call text-gray-900"></i> {feedback.mobile}</p>
-                <p className="mt-2 text-gray-600 bg-orange-100 p-2 rounded-md"><i className="fi fi-sr-messages text-gray-900"></i>  {feedback.message}</p>
-                <p className="mt-2 text-xs text-gray-400 text-end">
-                  {new Date(feedback.createdAt).toLocaleDateString()}
+                <p className= {`mt-2 text-gray-600 ${feedback.feedbackType === 'feedback' ? 'bg-orange-100' : 'bg-green-100'} p-2 rounded-md`}><i className="fi fi-sr-messages text-gray-900"></i>  {feedback.message}</p>
+                <p className="mt-2 text-xs text-black text-end">
+                <TimeConverter date = {feedback.createdAt} />  
                 </p>
               </div>
             ))}
