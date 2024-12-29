@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path'; // Import the path module
-
-// https://vite.dev/config/
+import path from 'path';
+ 
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -21,7 +20,8 @@ export default defineConfig({
         comments: false, // Optional: remove comments in the final bundle
       },
     },
-    minify: 'terser', // Use terser to minimize code
+    outDir: 'build',
+    minify: 'terser',
     sourcemap: false, 
     chunkSizeWarningLimit: 2000, 
   }, 
