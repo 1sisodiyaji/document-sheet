@@ -10,4 +10,18 @@ export default defineConfig({
       "~": path.resolve(__dirname, "node_modules"),
     },
   },
+  build: {
+    terserOptions: {
+      compress: {
+        drop_console: true, // Optional: remove console logs
+        pure_getters: true, // Optional: clean up getters
+      },
+      mangle: true, // Optional: minify
+      format: {
+        comments: false, // Optional: remove comments in the final bundle
+      },
+    },
+    minify: 'terser', // Use terser to minimize code
+    sourcemap: false, // Disable sourcemaps for production builds
+  },
 });
