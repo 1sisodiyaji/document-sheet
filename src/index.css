@@ -15,7 +15,7 @@
   }
 
   body {
-    scrollbar-width: none !important;   
+    scrollbar-width: 0px !important;  
     -ms-overflow-style: none !important; 
     font-family: var(--font-montserrat), sans-serif;
   }    

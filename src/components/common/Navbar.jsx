@@ -1,7 +1,8 @@
-import  { Link} from "react-router-dom";
-import React, { useState, useEffect } from "react"; 
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const [scrollWidth, setScrollWidth] = useState(0);
   const pathname = window.location.pathname;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +17,20 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercentage = (scrollTop / docHeight) * 100;
+      setScrollWidth(scrollPercentage);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
 
@@ -26,7 +41,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Close sidebar on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -34,12 +48,10 @@ const Navbar = () => {
   return (
     <>
       <header>
-        <nav
-          className={`fixed w-full z-20 top-0 start-0 ${
-            isScrolled
+        <nav  className={`fixed w-full z-20 top-0 start-0 ${isScrolled
               ? "bg-white shadow-md text-black duration-300"
               : "bg-transparent text-black"
-          }`}
+            }`}
         >
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link
@@ -63,11 +75,10 @@ const Navbar = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`py-2 px-3 rounded-md ${
-                    pathname === link.href
+                  className={`py-2 px-3 rounded-md ${pathname === link.href
                       ? "bg-green-300 text-black shadow-md"
                       : "text-black hover:bg-green-200"
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </Link>
@@ -111,13 +122,16 @@ const Navbar = () => {
               </button>
             </div>
           </div>
+          
+          <div className="h-[2px] bg-green-500 absolute bottom-0 left-0"style={{ width: `${scrollWidth}%` }}></div>
+
         </nav>
+        
 
         {/* Sidebar Menu */}
         <div
-          className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-30 transform transition-transform duration-300 ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-30 transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="p-4 flex flex-col h-full">
             {/* Close Button */}
@@ -147,33 +161,30 @@ const Navbar = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className={`block py-2 px-3 rounded-md ${
-                      pathname === link.href
+                    className={`block py-2 px-3 rounded-md ${pathname === link.href
                         ? "bg-green-300 text-black shadow-md"
                         : "text-black hover:bg-green-200"
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <Link to={'/privacy-policy'} 
-              className={`block py-2 px-3 rounded-md ${
-                      pathname === '/privacy-policy'
-                        ? "bg-green-300 text-black shadow-md"
-                        : "text-black hover:bg-green-200"
-                    }`}> 
-                    Privacy Policy
-                     </Link>
-              <Link to={'/terms-condition'} 
-               className={`block py-2 px-3 rounded-md ${
-                pathname === '/terms-condition'
-                  ? "bg-green-300 text-black shadow-md"
-                  : "text-black hover:bg-green-200"
-              }`}
-              > 
-              Terms & Condition
-               </Link>
+              <Link to={'/privacy-policy'}
+                className={`block py-2 px-3 rounded-md ${pathname === '/privacy-policy'
+                    ? "bg-green-300 text-black shadow-md"
+                    : "text-black hover:bg-green-200"
+                  }`}>
+                Privacy Policy
+              </Link>
+              <Link to={'/terms-condition'}
+                className={`block py-2 px-3 rounded-md ${pathname === '/terms-condition'
+                    ? "bg-green-300 text-black shadow-md"
+                    : "text-black hover:bg-green-200"
+                  }`}
+              >
+                Terms & Condition
+              </Link>
             </ul>
           </div>
         </div>

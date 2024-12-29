@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import Skeleton from '../../components/common/Skeleton';
 import { Helmet } from 'react-helmet';
 const FiveCards = lazy(() => import ('../../components/core/user/home/FiveCards'));
