@@ -17,7 +17,7 @@ const SingleVendorHistory = ({ vendorId }) => {
       try {
         setIsLoading(true);
         const response = await axios.post(
-          `${process.env.REACT_APP_BASE_URL}/api/admin/vendor-history`,
+          `${import.meta.env.VITE_BASE_URL}/api/admin/vendor-history`,
           { vendorID: vendorId, page, limit: itemsPerPage }
         );
   

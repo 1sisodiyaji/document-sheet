@@ -20,7 +20,7 @@ const SinglePayment = ({ paymentID }) => {
     const fetchSheetDeatils = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-payments/${paymentID}`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/get-payments/${paymentID}`);
         const data = response.data.data[0];
         setTranscationData(data);
         toast.success("Payment Fetched Successfully");

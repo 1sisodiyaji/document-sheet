@@ -21,7 +21,7 @@ const SearchHistory = ({ serialNumber }) => {
     }
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/user/genrate-bill/${sheetId}`,
+        `${import.meta.env.VITE_BASE_URL}/api/user/genrate-bill/${sheetId}`,
         { responseType: "blob" }
       );
 
@@ -50,7 +50,7 @@ const SearchHistory = ({ serialNumber }) => {
       try {
         setIsLoading(true);
         const response = await axios.get( 
-          `${process.env.REACT_APP_BASE_URL}/api/admin/search-serial-number/${serialNumber}`
+          `${import.meta.env.VITE_BASE_URL}/api/admin/search-serial-number/${serialNumber}`
         );
         const data = response.data.response;
         setSheetData(data);

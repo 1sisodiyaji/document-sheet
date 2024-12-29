@@ -18,7 +18,7 @@ const Sheet = () => {
       setIsLoading(true);
 
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/api/admin/search-serial-number/${serialSearch.trim()}`
+        `${import.meta.env.VITE_BASE_URL}/api/admin/search-serial-number/${serialSearch.trim()}`
       );
 
       if (!response.ok) {
@@ -65,7 +65,7 @@ const Sheet = () => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/api/admin/cancel-sheet`,
+        `${import.meta.env.VITE_BASE_URL}/api/admin/cancel-sheet`,
         {
           method: "PUT",
           headers: {

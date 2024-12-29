@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TimeConverter = ({ date }) => {
   return (
     <small className="pe-2">

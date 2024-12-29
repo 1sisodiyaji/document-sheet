@@ -27,7 +27,7 @@ const SuccessPage = () => {
     const email = 'testimonial@documentsheet.com';
     const mobile = '0000000000';
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/user/create-testimonial`, {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/create-testimonial`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const SuccessPage = () => {
     }
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/user/genrate-Sheet/${sheetId}`,
+        `${import.meta.env.VITE_BASE_URL}/api/user/genrate-Sheet/${sheetId}`,
         {
           responseType: 'blob',
         }
@@ -94,7 +94,7 @@ const SuccessPage = () => {
     }
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/user/genrate-bill/${sheetId}`,
+        `${import.meta.env.VITE_BASE_URL}/api/user/genrate-bill/${sheetId}`,
         {
           responseType: 'blob',
         }

@@ -22,7 +22,7 @@ const SingleHistory = ({ sheetID }) => {
       return;
     }
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/genrate-bill/${sheetId}`,
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/user/genrate-bill/${sheetId}`,
         {
           responseType: "blob",
         }
@@ -51,7 +51,7 @@ const SingleHistory = ({ sheetID }) => {
     const fetchSheetDeatils = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-sheets/${sheetID}`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/get-sheets/${sheetID}`);
         const data = response.data.data;
         setSheetData(data);
         toast.success("Sheet Data Fetched Successfully");

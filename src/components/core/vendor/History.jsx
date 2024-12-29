@@ -33,7 +33,7 @@ const History = () => {
 
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/vendor/all-history?page=${page}&limit=${limit}`,
+        `${import.meta.env.VITE_BASE_URL}/api/vendor/all-history?page=${page}&limit=${limit}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

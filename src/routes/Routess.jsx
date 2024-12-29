@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom'; 
 import Home from '../pages/user/Home';
 import ScanQr from '../pages/user/ScanQr';
@@ -29,7 +29,6 @@ const Routess = () => {
 
   return (
     <> 
-
       <Routes> 
             <Route path="/" element={<UserLayout><Home /></UserLayout>} />
             <Route path="/scan-qr" element={<UserLayout><ScanQr /></UserLayout>} />
@@ -53,7 +52,6 @@ const Routess = () => {
           
          
       </Routes>
- 
     </>
   );
 };

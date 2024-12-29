@@ -14,7 +14,7 @@ const DownloadSheet = async (sheetId) => {
   }
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/api/user/genrate-Sheet/${sheetId}`,
+      `${import.meta.env.VITE_BASE_URL}/api/user/genrate-Sheet/${sheetId}`,
       {
         responseType: 'blob',
       }
@@ -46,7 +46,7 @@ const DownloadBill = async (sheetId) => {
   }
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/api/user/genrate-bill/${sheetId}`,
+      `${import.meta.env.VITE_BASE_URL}/api/user/genrate-bill/${sheetId}`,
       {
         responseType: 'blob',
       }
@@ -125,7 +125,7 @@ const CreateNewSheet = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/vendor/CreateSheetByVendor`,
+        `${import.meta.env.VITE_BASE_URL}/api/vendor/CreateSheetByVendor`,
         docData,
         {
           headers: {

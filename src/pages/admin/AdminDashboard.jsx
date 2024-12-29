@@ -46,7 +46,7 @@ const AdminDashboard = () => {
 
   const handleLogout = async() => {
       try{
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/admin/logout`)
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/admin/logout`)
   
       if(response.status) {
           Cookies.remove("Admin-document-sheet-token-#ADST");

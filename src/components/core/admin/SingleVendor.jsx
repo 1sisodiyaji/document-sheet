@@ -12,7 +12,7 @@ const SingleVendor = ({ vendorId }) => {
     const fetchVendorData = async () => {
       try {
         setIsLoading(true); // Show loading state
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/all-vendors/${vendorId}`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/all-vendors/${vendorId}`);
         setVendorData(response.data.data); // Update vendor data
         toast.success("Vendor data fetched successfully!");
       } catch (error) {

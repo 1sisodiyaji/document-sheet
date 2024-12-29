@@ -27,7 +27,7 @@ const ScanTabs = () => {
 
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/api/user/search-sheet/${serialNumber}`
+        `${import.meta.env.VITE_BASE_URL}/api/user/search-sheet/${serialNumber}`
       );
 
       const data = response.data;

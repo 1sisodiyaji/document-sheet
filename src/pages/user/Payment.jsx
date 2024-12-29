@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -47,7 +47,7 @@ const Payment = () => {
           return;
         }
 
-        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/user/create-payment`, {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/user/create-payment`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ amount, name, sheetID, serialNumber }),
@@ -60,7 +60,7 @@ const Payment = () => {
         const orderId = data.orderID;
 
         const options = {
-          key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+          key: import.meta.env.VITE_RAZORPAY_KEY_ID,
           amount: amount * 100,
           currency: "INR",
           name: "Document Sheet",
@@ -70,7 +70,7 @@ const Payment = () => {
 
             try {
               const verifyResponse = await fetch(
-                `${process.env.REACT_APP_BASE_URL}/api/user/verify-payment`,
+                `${import.meta.env.VITE_BASE_URL}/api/user/verify-payment`,
                 {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -12,10 +12,11 @@ const AdminLoginChecker = (props) => {
 
     }
   });
+  
   return (
-    <div> 
-      <Component />
-    </div>
+  <>
+  <Component />
+  </>
   )
 };
 

@@ -21,7 +21,7 @@ const Vendors = () => {
 
   const fetchVendor = async (page) => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/all-vendors?page=${page}&limit=${limit}`,);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/all-vendors?page=${page}&limit=${limit}`,);
       console.log(response);
       if (response.data.success === false) {
         toast.error("Failed to fetch Vendor.");
@@ -64,7 +64,7 @@ const Vendors = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/admin/update-vendor`,
+        `${import.meta.env.VITE_BASE_URL}/api/admin/update-vendor`,
         { vendorID } // Pass vendorID in the request body
       );
 

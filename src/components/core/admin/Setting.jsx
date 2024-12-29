@@ -19,7 +19,7 @@ const Setting = () => {
       try {
 
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/admin/getAdminDetails`,
+          `${import.meta.env.VITE_BASE_URL}/api/admin/getAdminDetails`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ const Setting = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/admin/recover-password`,
+        `${import.meta.env.VITE_BASE_URL}/api/admin/recover-password`,
         { email, password }
       );
 

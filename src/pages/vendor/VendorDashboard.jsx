@@ -56,7 +56,7 @@ const VendorDashboard = () => {
       try {
 
         const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/api/vendor/show-vendor-Detail`,
+          `${import.meta.env.VITE_BASE_URL}/api/vendor/show-vendor-Detail`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -80,7 +80,7 @@ const VendorDashboard = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/vendor/logout`)
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/vendor/logout`)
 
       if (response.status) {
         Cookies.remove("Vendor-document-sheet-token-#VDST");

@@ -27,7 +27,7 @@ const AdminLogin = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/admin/login`, { email, password });
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/admin/login`, { email, password });
       const { success, token } = response.data;
 
       if (success) {

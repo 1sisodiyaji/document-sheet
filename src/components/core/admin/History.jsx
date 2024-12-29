@@ -23,7 +23,7 @@ const History = () => {
 
   const fetchHistory = async (page) => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-sheets?page=${page}&limit=${limit}`,);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/get-sheets?page=${page}&limit=${limit}`,);
       if (response.data.success === false) {
         toast.error("Failed to fetch history.");
       } else {

@@ -17,7 +17,7 @@ const Feedback = () => {
         const getFeedback = async () => {
             setIsLoading(true); // Start loading
             try {
-                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-feedback`, {
+                const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/get-feedback`, {
                     params: { page: currentPage, limit: feedbackPerPage },
                 });
 
@@ -52,7 +52,7 @@ const Feedback = () => {
     const getSingleFeedback = async (id) => {
         setIsLoading(true); // Start loading
         try {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-feedback/${id}`);
+            const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/get-feedback/${id}`);
 
             if (response.data.success === true) {
                 toast.success("Feedback fetched");

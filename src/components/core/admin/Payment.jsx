@@ -23,7 +23,7 @@ const Payment = () => {
 
   const fetchTranscation = async (page) => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-payments?page=${page}&limit=${limit}`,);
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/get-payments?page=${page}&limit=${limit}`,);
       if (response.data.success === false) {
         toast.error("Failed to fetch transaction.");
       } else {

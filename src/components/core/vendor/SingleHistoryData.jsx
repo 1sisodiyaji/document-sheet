@@ -22,7 +22,7 @@ const SingleHistoryData = ({ serialNumber }) => {
       return;
     }
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/genrate-bill/${sheetId}`,
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/user/genrate-bill/${sheetId}`,
         {
           responseType: "blob",
         }
@@ -51,7 +51,7 @@ const SingleHistoryData = ({ serialNumber }) => {
     const fetchSheetDeatils = async () => {
       try {
         setIsloading(true);
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/vendor/search-sheet/${serialNumber}`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/vendor/search-sheet/${serialNumber}`);
         const data = response.data.SheetDetails;
         setSheetData(data);
         toast.success("Sheet Data Fetched Successfully");

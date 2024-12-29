@@ -18,7 +18,7 @@ const RecentsSheet = () => {
             try {
                 setLoading(true);
                 const response = await axios.get(
-                    `${process.env.REACT_APP_BASE_URL}/api/vendor/all-history`,
+                    `${import.meta.env.VITE_BASE_URL}/api/vendor/all-history`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

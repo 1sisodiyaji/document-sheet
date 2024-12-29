@@ -20,8 +20,8 @@ const Home = () => {
 
         // Fetch data for user and vendor in parallel
         const [userResponse, vendorResponse] = await Promise.all([
-          axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/graph-data-for-user`),
-          axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/graph-data-for-vendor`),
+          axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/graph-data-for-user`),
+          axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/graph-data-for-vendor`),
         ]);
 
         // Process data into chart-friendly format
@@ -40,7 +40,7 @@ const Home = () => {
     const fetchPaymentStats = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/graph-data-for-payments`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/graph-data-for-payments`);
         const data = processPaymentGraphData(response.data.data);
         setPaymentGraphData(data);
       } catch (error) {
@@ -54,7 +54,7 @@ const Home = () => {
     const getFeedback = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/admin/get-feedback`);
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/admin/get-feedback`);
         if (response.data.success === true) {
           setFeedback(response.data.data);
           setCount(response.data.count);

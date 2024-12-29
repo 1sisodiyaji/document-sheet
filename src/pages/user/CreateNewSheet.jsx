@@ -80,7 +80,7 @@ const CreateNewSheet = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/create-sheet`, docData);
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/user/create-sheet`, docData);
 
       if (response.success === false) {
         toast.error('Failed to Create Sheet');
