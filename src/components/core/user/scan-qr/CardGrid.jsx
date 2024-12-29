@@ -15,7 +15,7 @@ const CardGrid = () => {
         <div 
           className="flex flex-col justify-center items-center md:min-h-64 p-5 bg-gradient-to-r from-orange-600 to-orange-300 border border-orange-200 rounded-lg shadow hover:scale-95 hover:shadow-lg transition-transform duration-300"
         >
-          <h5 className="mb-2 md:text-3xl text-md font-bold tracking-tight text-white">
+          <h5 className="mb-2 md:text-3xl text-md font-bold tracking-tight text-white p-1">
           Manage Your Documents Seamlessly
           </h5>
           <p className="font-normal text-white md:text-md text-xs">

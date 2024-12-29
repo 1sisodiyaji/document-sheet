@@ -9,7 +9,7 @@ const animationVariants = {
 const AboutCard = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 md:my-36 my-12">
-      <h1 className="md:text-4xl text-xl font-bold text-center mb-8 overflow-y-hidden">
+      <h1 className="md:text-4xl text-xl font-bold text-center mb-8 p-1">
         Simplifying Documentation for a Smarter Future
       </h1>
  

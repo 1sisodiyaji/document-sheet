@@ -8,7 +8,7 @@ const Header = () => (
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
   >
-    <h1 className="md:text-3xl text-xl font-bold">Document Package - 5 Sheets with High-Quality File</h1>
+    <h1 className="md:text-3xl text-xl font-bold p-1">Document Package - 5 Sheets with High-Quality File</h1>
     <p className="mt-4 text-lg">Comprehensive document package for your needs.</p>
   </motion.header>
 );

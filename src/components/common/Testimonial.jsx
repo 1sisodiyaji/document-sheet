@@ -45,7 +45,7 @@ const Testimonial = () => {
      <section className='my-12 p-1'>
 
 <article>
-  <h1 className='md:text-4xl text-xl font-semibold text-center overflow-y-hidden capitalize'>Let&apos;s hear What our Customers Saying . . </h1>
+  <h1 className='md:text-4xl text-xl font-semibold text-center p-1 capitalize'>Let&apos;s hear What our Customers Saying . . </h1>
 </article>
 
 <section className="relative flex  md:flex-row flex-col my-12 max-w-full mx-auto bg-gray-50 py-6 p-1 gap-6 justify-center">

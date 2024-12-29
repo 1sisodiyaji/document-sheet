@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import axios from "axios";
 import Skeleton from "../../common/Skeleton";

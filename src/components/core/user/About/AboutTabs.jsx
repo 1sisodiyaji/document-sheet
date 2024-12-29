@@ -28,7 +28,7 @@ const AboutTabs = () => {
     <h4 className="text-orange-500 font-semibold uppercase text-sm tracking-wide">
       Vision & Mission
     </h4>
-    <h2 className="md:text-4xl text-xl font-bold text-gray-800 mt-2 overflow-y-hidden">
+    <h2 className="md:text-4xl text-xl font-bold text-gray-800 mt-2 p-1">
       Revolutionizing Documentation with Efficiency and Security
     </h2>
 

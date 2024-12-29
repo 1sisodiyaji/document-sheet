@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 const loadScript = (src) => {
   return new Promise((resolve, reject) => {
@@ -53,23 +53,21 @@ const Payment = () => {
           body: JSON.stringify({ amount, name, sheetID, serialNumber }),
         });
 
-        const data = await response.json();
-        console.log(data);
+        const data = await response.json(); 
         if (!data || !data.orderID) {
           throw new Error("Order ID not received.");
         }
         const orderId = data.orderID;
 
         const options = {
-          key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Razorpay Key ID
+          key: process.env.REACT_APP_RAZORPAY_KEY_ID,
           amount: amount * 100,
           currency: "INR",
           name: "Document Sheet",
-          description: "Test Payment",
+          description: "The payment page for the document sheet",
           order_id: orderId,
           handler: async (paymentResponse) => {
 
-            // Pass payment response to the server for verification
             try {
               const verifyResponse = await fetch(
                 `${process.env.REACT_APP_BASE_URL}/api/user/verify-payment`,
@@ -84,14 +82,13 @@ const Payment = () => {
                 }
               );
 
-              const verifyResult = await verifyResponse.json();
-              console.log(verifyResult);
+              const verifyResult = await verifyResponse.json(); 
               if (verifyResult.success) {
                 toast.success("Payment successfully verified!");
-                const sheetId = sheetID; 
+                const sheetId = sheetID;
                 const Name = name;
                 window.history.replaceState(null, "");
-                navigate("/feedback", { state: { sheetId ,Name} });
+                navigate("/feedback", { state: { sheetId, Name } });
               } else {
                 toast.error("Payment verification failed!");
               }
@@ -101,8 +98,8 @@ const Payment = () => {
             }
           },
           prefill: {
-            name: "Customer Name",
-            email: "customer@example.com",
+            name: "your name",
+            email: "documentsheet@documentsheet.com",
             contact: "1234567890",
           },
           theme: { color: "#F37254" },
@@ -128,19 +125,19 @@ const Payment = () => {
 
   return (
     <>
-    {isPaymentInitialized.current ? 
-    <div className="h-screen flex justify-center items-center p-4 bg-[url('https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734580574/Checker_1_jwcjpl.png')] bg-cover bg-center">
-  <div className="bg-gradient-to-l from-[#D1E1D0] to-[#EFC989] py-12 px-8 md:py-24 md:px-40 animate-pulse rounded-xl shadow-lg">
-    <p className="flex items-center justify-center md:text-3xl text-xl font-semibold text-gray-800">
-      Processing your payment...
-      <span className="ml-4 w-6 h-6 md:w-8 md:h-8 border-4 border-green-500 border-dotted rounded-full animate-spin"></span>
-    </p>
-  </div>
-</div>
-:
-<p>Paymnet Failed kindly contact admin for any Queries.</p>
-  }
-</>
+      {isPaymentInitialized.current ?
+        <div className="h-screen flex justify-center items-center p-4 bg-[url('https://res.cloudinary.com/dlgyf2xzu/image/upload/v1734580574/Checker_1_jwcjpl.png')] bg-cover bg-center">
+          <div className="bg-gradient-to-l from-[#D1E1D0] to-[#EFC989] py-12 px-8 md:py-24 md:px-40 animate-pulse rounded-xl shadow-lg">
+            <p className="flex items-center justify-center md:text-3xl text-xl font-semibold text-gray-800 p-1">
+              Processing your payment...
+              <span className="ml-4 w-5 h-5 md:w-6 md:h-6 border-4 border-green-500 border-dotted rounded-full animate-spin"></span>
+            </p>
+          </div>
+        </div>
+        :
+        <p>Paymnet Failed kindly contact admin for any Queries.</p>
+      }
+    </>
   );
 };
 

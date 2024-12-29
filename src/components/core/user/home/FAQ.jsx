@@ -6,7 +6,7 @@ import Accordion from '../../../common/Accordion';
 const FAQ = () => {
   return (
     <>
-    <h1 className='text-center text-3xl font-semibold'>FAQ</h1>
+    <h1 className='text-center text-3xl font-semibold p-1'>FAQ</h1>
     <div className="my-12 md:py-0 py-12 p-1 md:max-w-7xl mx-auto">
       
         <motion.section

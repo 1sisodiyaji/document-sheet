@@ -1,13 +1,17 @@
-import React from 'react'
-import Routess from './routes/Routess'
-import { Toaster } from "react-hot-toast";
+import React from 'react';
+import Routess from './routes/Routess'; 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   return (
-   <>
-  <Toaster position="bottom-center"/>
-   <Routess/>
-   </>
-  )
-}
+    <>
+      <div>
+        <ToastContainer/>
+        <Routess />
+      </div>
+    </>
+  );
+};
 
-export default App
+export default App;

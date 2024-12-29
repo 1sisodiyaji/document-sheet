@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import Home from "../../components/core/admin/Home";
 import History from "../../components/core/admin/History";
 import Setting from "../../components/core/admin/Setting";

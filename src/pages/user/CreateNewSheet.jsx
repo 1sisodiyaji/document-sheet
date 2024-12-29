@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CreateSheet from '../../data/CreateSheet.json';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import StatesData from '../../data/AddressData.json';
 import Banner from '../../components/common/Banner';

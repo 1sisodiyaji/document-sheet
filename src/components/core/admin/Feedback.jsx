@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import toast from "react-hot-toast";
+import {toast} from "react-toastify";
 import Skeleton from "../../common/Skeleton";
 import TimeConverter from "../../../utils/TimeConverter";
 

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import CreateSheet from '../../../data/CreateSheet.json';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { creatformContext } from '../../../pages/vendor/VendorDashboard';
@@ -352,8 +352,8 @@ const CreateNewSheet = () => {
                 }`}
               >
                 {loading ? (
-                  <div className="flex items-center justify-center overflow-y-hidden">
-                    <div className="w-6 h-6 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
+                  <div className="flex items-center justify-center p-1">
+                    <div className="w-5 h-5 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
                     <span className="ml-2">Creating...</span>
                   </div>
                 ) : (

@@ -1,5 +1,5 @@
  import React, { useState } from "react";
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 
 const ContactPageMessage = () => { 
     const [formData, setFormData] = useState({
@@ -136,7 +136,7 @@ const ContactPageMessage = () => {
                             {isLoading ? (
                                 <div className="flex justify-center items-center space-x-2">
                                     <span>Loading</span>
-                                    <div role="status" className="overflow-y-hidden">
+                                    <div role="status" className="p-1">
                                         <svg
                                             aria-hidden="true"
                                             className="w-6 h-5 text-gray-200 animate-spin fill-green-600"

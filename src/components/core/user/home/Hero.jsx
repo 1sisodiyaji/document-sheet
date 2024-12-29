@@ -8,8 +8,8 @@ const Hero = () => {
         <div className="grid max-w-7xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-6 p-1">
             <div>
-              <div className="max-w-3xl mb-3 text-4xl font-semibold  md:text-5xl overflow-y-hidden py-2" style={{ lineHeight: '68px' }}>
-                Trusted Documents For Your Real  Estate <span className="bg-orange-400 px-4 py-1 ms-2 rounded-3xl overflow-y-hidden">needs</span>
+              <div className="max-w-3xl mb-3 text-4xl font-semibold  md:text-5xl p-1 py-2" style={{ lineHeight: '68px' }}>
+                Trusted Documents For Your Real  Estate <span className="bg-orange-400 px-4 py-1 ms-2 rounded-3xl p-1">needs</span>
               </div>
             </div>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl ">Effortless and reliable document solutions for real estate <br /> — because every detail matters.</p>

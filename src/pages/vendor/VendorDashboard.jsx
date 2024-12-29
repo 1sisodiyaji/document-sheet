@@ -6,7 +6,7 @@ import CreateNewSheet from "../../components/core/vendor/CreateNewSheet";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import SingleHistoryData from "../../components/core/vendor/SingleHistoryData";
 import RecentsSheet from "../../components/core/vendor/RecentsSheet";
 
@@ -19,6 +19,7 @@ const VendorDashboard = () => {
   const navigate = useNavigate();
   const [allocatedLeft, setAllocatedLeft] = useState("0");
   const [id, setId] = useState("");
+  const [name, setName] = useState("");
   const [totalAssignedSheets, setTotalAssignedSheets] = useState("");
   const [totalSheets, setTotalSheets] = useState("");
   const [serialNumberData, setSerialNumberData] = useState("");
@@ -44,7 +45,7 @@ const VendorDashboard = () => {
     { name: "History", id: "history", img1: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733940865/image_6_fvdgvx.png", img2: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733940865/Simplification_2_uhznnd.png" },
     { name: "Admin", id: "admin", img1: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733940865/Simplification_gxaqjn.png", img2: "https://res.cloudinary.com/dlgyf2xzu/image/upload/v1733940865/Simplification_gxaqjn.png" },
   ];
-  
+
   useEffect(() => {
     const token = Cookies.get("Vendor-document-sheet-token-#VDST");
     if (!token) {
@@ -65,6 +66,7 @@ const VendorDashboard = () => {
         const result = response.data.data;
         setAllocatedLeft(result.allocatedLeft);
         setId(result.id);
+        setName(result.name);
         setTotalSheets(result.totalSheets);
         setTotalAssignedSheets(result.assignedSheets)
       } catch (error) {
@@ -76,21 +78,21 @@ const VendorDashboard = () => {
     fetchVendorDetails();
   }, [createsheet]);
 
-  const handleLogout = async() => {
-    try{
-    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/vendor/logout`)
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/vendor/logout`)
 
-    if(response.status) {
+      if (response.status) {
         Cookies.remove("Vendor-document-sheet-token-#VDST");
         navigate("/vendor-login");
-      }else{
+      } else {
         toast.error("Failed to Logout");
       }
-    }catch(error){
+    } catch (error) {
       console.log(error);
       toast.error("Failed to excute logout");
     }
-    
+
   };
 
   return (
@@ -100,7 +102,7 @@ const VendorDashboard = () => {
         <div className="flex h-screen ">
           <div className={`fixed inset-y-0 left-0 z-50 transform bg-[#F7EEDC] md:w-96 w-80 shadow-lg p-4 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`} >
             <div className="text-gray-800 mb-6 text-center">
-              <h2 className="font-bold text-xl">Welcome Back,</h2>
+              <h2 className="font-bold text-xl">Welcome Back, {name}</h2>
               <p className="text-lg">{id}</p>
             </div>
             <nav className="space-y-4">
@@ -194,7 +196,7 @@ const VendorDashboard = () => {
                             loading="lazy"
                             className="mx-auto"
                           />
-                          <h3 className="text-3xl font-semibold mb-2">
+                          <h3 className="text-3xl font-semibold mb-2 p-1">
                             Create new sheet
                           </h3>
                           <p className="text-2xl  text-gray-600">
@@ -214,7 +216,7 @@ const VendorDashboard = () => {
                         <div className="md:min-h-64 flex justify-center items-center bg-green-100 rounded-lg p-6">
                           <div className="text-center">
                             <Chart left={totalAssignedSheets - allocatedLeft} Total={totalAssignedSheets} />
-                            <div className="text-4xl font-bold overflow-y-hidden">{totalSheets}</div>
+                            <div className="text-4xl font-bold p-1">{totalSheets}</div>
                             <p className="text-sm text-gray-600">Total Sheets </p>
                           </div>
                         </div>

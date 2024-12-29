@@ -36,13 +36,13 @@ const Empowering = () => {
     </Link>
   </article>
 
-  <div className="md:w-1/2 md:mt-0 mt-6 overflow-y-hidden"  >
+  <div className="md:w-1/2 md:mt-0 mt-6 p-1"  >
     <img
       src="https://res.cloudinary.com/dlgyf2xzu/image/upload/v1732279174/Images_1_vmzhht.png"
       width={1000}
       height={1000}
       loading="lazy"
-      className='overflow-y-hidden'
+      className='p-1'
       alt="empowering section"
     />
   </div>

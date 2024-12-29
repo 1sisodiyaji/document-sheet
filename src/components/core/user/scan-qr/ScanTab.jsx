@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 import axios from "axios";
 import QRCODEANIMATION from "../../../../data/QR_Code_Animation.json";
+import AuthAnimation from "../../../../data/Auth_Animation.json"
+import QrCodeScanner from "./QrCodeScanner";
 
 const ScanTabs = () => {
   const [serialNumber, setSerialNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [sheetDetails, setSheetDetails] = useState(null); // State for fetched data
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +46,25 @@ const ScanTabs = () => {
 
   return (
     <section className="md:my-24 p-1">
+      
+    
+
+      <div className="md:py-16 py-12 p-1">
+        <div className="max-w-7xl mx-auto rounded-lg md:p-8 p-2 flex justify-center shadow-md">
+        <div className="flex flex-col items-center md:w-2/3">
+          <QrCodeScanner />
+          </div>
+          <div className="w-1/3 hidden md:block">
+            <Player
+              autoplay
+              loop
+              src={AuthAnimation}
+              style={{ height: "auto", width: "100%" }}
+            />
+          </div>
+         
+        </div>
+      </div>
       <div className="md:py-16 py-12 p-1">
         <div className="max-w-7xl mx-auto rounded-lg md:p-8 p-2 flex justify-center border-dashed border-2 border-orange-300">
           <div className="w-1/3 hidden md:block">

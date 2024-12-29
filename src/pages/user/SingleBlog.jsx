@@ -51,7 +51,7 @@ const SingleBlog = () => {
       <div className="max-w-7xl mx-auto my-24 flex md:flex-row flex-col">
         <div className="p-4 md:w-2/3">
           <div className="flex md:flex-row flex-col gap-2">
-            <h1 className="md:text-3xl text-lg font-semibold mb-4 overflow-y-hidden">{blog.title}</h1>
+            <h1 className="md:text-3xl text-lg font-semibold mb-4 p-1">{blog.title}</h1>
 
             <div className="flex md:flex-col  md:justify-center justify-end items-center md:w-24 w-full">
               <TimeCalculator text={blog.description} />

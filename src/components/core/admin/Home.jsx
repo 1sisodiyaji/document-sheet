@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ChartComponent from "../../common/Chart";
 import axios from "axios";
-import toast from "react-hot-toast";
+import {toast} from "react-toastify";
 import Skeleton from "../../common/Skeleton";
 import TimeConverter from "../../../utils/TimeConverter";
 

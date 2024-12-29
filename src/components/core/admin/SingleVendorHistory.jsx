@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import TimeConverter from '../../../utils/TimeConverter';
 
 const SingleVendorHistory = ({ vendorId }) => {
@@ -10,31 +10,32 @@ const SingleVendorHistory = ({ vendorId }) => {
    const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 4;
 
-  const fetchVendorHistory = async (page = 1) => {
-    try {
-      setIsLoading(true);
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/admin/vendor-history`,
-        { vendorID: vendorId, page, limit: itemsPerPage }
-      );
 
-      if (response.data.success) {
-        setVendorHistoryData(response.data.result.sheets);
-        const totalItems = response.data.result.count;
-        setTotalPages(Math.ceil(totalItems / itemsPerPage));
-        toast.success("Vendor History data fetched successfully!");
-      } else {
-        toast.error("No vendor history data found.");
-      }
-    } catch (error) {
-      console.error("Error fetching vendor history data:", error);
-      toast.error("Failed to fetch vendor history data.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
+    const fetchVendorHistory = async (page = 1) => {
+      try {
+        setIsLoading(true);
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/api/admin/vendor-history`,
+          { vendorID: vendorId, page, limit: itemsPerPage }
+        );
+  
+        if (response.data.success) {
+          setVendorHistoryData(response.data.result.sheets);
+          const totalItems = response.data.result.count;
+          setTotalPages(Math.ceil(totalItems / itemsPerPage));
+          toast.success("Vendor History data fetched successfully!");
+        } else {
+          toast.error("No vendor history data found.");
+        }
+      } catch (error) {
+        console.error("Error fetching vendor history data:", error);
+        toast.error("Failed to fetch vendor history data.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
     fetchVendorHistory(currentPage);
   }, [currentPage, vendorId]);
 

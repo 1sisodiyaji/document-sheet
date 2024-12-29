@@ -33,10 +33,10 @@ const HeroAbout = () => {
 
           {/* Right: Content Section */}
           <div>
-            <h4 className="text-orange-500 font-semibold uppercase text-sm tracking-wide overflow-y-hidden">
+            <h4 className="text-orange-500 font-semibold uppercase text-sm tracking-wide p-1">
               About Us
             </h4>
-            <h2 className="md:text-4xl text-xl font-bold text-gray-800 mt-2 overflow-y-hidden">
+            <h2 className="md:text-4xl text-xl font-bold text-gray-800 mt-2 p-1">
               Simplifying Document Management for You
             </h2>
             <p className="text-gray-600 mt-4 md:text-base text-xs">

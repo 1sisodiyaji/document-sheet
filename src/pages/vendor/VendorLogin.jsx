@@ -3,7 +3,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import AUTHENTICATE_ANIMARIONS from "../../data/Auth_Animation.json";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import toast from "react-hot-toast";
+import {toast} from "react-toastify";
 import Cookies from "js-cookie";
 
 const VendorLogin = () => {
@@ -158,8 +158,8 @@ const VendorLogin = () => {
               }`}
             >
               {loading ? (
-                <div className="flex items-center justify-center overflow-y-hidden">
-                  <div className="w-6 h-6 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
+                <div className="flex items-center justify-center p-1">
+                  <div className="w-5 h-5 border-2 border-t-transparent border-black rounded-full animate-spin"></div>
                   <span className="ml-2">Loading...</span>
                 </div>
               ) : (
