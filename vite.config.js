@@ -22,6 +22,7 @@ export default defineConfig({
       },
     },
     minify: 'terser', // Use terser to minimize code
-    sourcemap: false, // Disable sourcemaps for production builds
-  },
+    sourcemap: false, 
+    chunkSizeWarningLimit: 2000, 
+  }, 
 });
