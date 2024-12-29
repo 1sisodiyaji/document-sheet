@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { useState , Suspense, lazy  } from 'react';
 import CreateSheet from '../../data/CreateSheet.json';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import StatesData from '../../data/AddressData.json';
-import Banner from '../../components/common/Banner';
+const Banner = lazy(() => import('../../components/common/Banner')); 
 import { useNavigate } from 'react-router-dom';
+import Skeleton from '../../components/common/Skeleton';
 
 const CreateNewSheet = () => {
   const [loading, setLoading] = useState(false);
@@ -102,7 +103,7 @@ const CreateNewSheet = () => {
 
   return (
     <>
-      <Banner title="Create Your Sheet" text="Fill your information correctly and get your sheet" />
+      <Suspense fallback={<Skeleton />}>  <Banner title="Create Your Sheet" text="Fill your information correctly and get your sheet" /> </Suspense>
       <div className="max-w-7xl mx-auto">
 
         <div className="flex md:flex-row flex-col-reverse justify-center items-center py-6 md:mb-0 mb-16 px-2 mx-auto w-full">
