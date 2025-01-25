@@ -1,4 +1,3 @@
-import React from 'react' 
 import TabComponent from '../../components/core/user/contact/TabComponent'
 import ContactPageMessage from '../../components/core/user/contact/ContactPageMessage'
 
